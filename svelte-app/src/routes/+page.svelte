@@ -24,7 +24,7 @@
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: #2563eb;
 		font-size: 3rem;
 		margin-bottom: 0.5rem;
 	}
@@ -36,7 +36,7 @@
 	}
 
 	button {
-		background-color: #ff3e00;
+		background-color: #2563eb;
 		color: white;
 		border: none;
 		padding: 0.75rem 1.5rem;
@@ -47,6 +47,6 @@
 	}
 
 	button:hover {
-		background-color: #e63600;
+		background-color: #1d4ed8;
 	}
 </style>
