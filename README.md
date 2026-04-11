@@ -1,9 +1,3 @@
-# Studio AI — Product Context
+# Wavelength — Product Context
 
-This repository contains product context documents for the Studio AI team. These documents inform product decisions, feature prioritization, and AI agent behavior.
-
-## Structure
-
-- `customer-research/` — Customer interviews, feedback sessions, and support themes
-- `strategy/` — Product vision, positioning, and competitive landscape
-- `planning/` — Quarterly roadmaps, feature priorities, and OKRs
+Documents for the Wavelength product team. We're building a legal, on-demand music streaming service — a new way to listen to music without buying CDs or downloading from Napster.

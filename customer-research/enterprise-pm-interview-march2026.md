@@ -1,44 +1,27 @@
-# Customer Interview: Sarah Chen, VP Product at Meridian Health
+# Customer Interview: Jake, 22, College Student
 
-**Date:** March 15, 2026
-**Interviewer:** Tim Cochran
-**Role:** VP of Product, Meridian Health (Series C, 450 employees)
-**Products managed:** 3 (patient portal, provider dashboard, billing platform)
+**Date:** March 2006
 
----
+## How Jake Listens to Music Today
 
-## Key Quotes
-
-> "We have 12 PMs and every single one writes specs differently. There's no consistency, no shared understanding of what 'good' looks like. Half the time engineering builds the wrong thing because the spec was ambiguous."
-
-> "I spend 40% of my week in status meetings. If I could get a real-time view of where every idea is in our validation process, I'd get two days back."
-
-> "We tried Productboard and Aha — they're great for tracking but they don't help you *think*. I need something that helps my PMs write better hypotheses, not just file tickets."
-
----
+- Has ~200 songs on his iPod, ripped from CDs and downloaded from Napster/LimeWire
+- Discovers new music from friends burning mix CDs, MTV, and word of mouth
+- Buys maybe 2 CDs a month ($15 each) — usually just wants 2-3 songs off the album
+- Spends 20 min on Napster finding a song, half the downloads are corrupted or mislabeled
 
 ## Pain Points
 
-1. **Spec quality is inconsistent** — Junior PMs write vague specs, senior PMs write novels. No happy medium.
-2. **Validation is ad-hoc** — Some ideas get customer validation, most don't. No systematic approach.
-3. **Context is scattered** — Customer feedback in Slack, research in Google Docs, specs in Notion, tickets in Jira. Nothing is connected.
-4. **AI tools are generic** — Tried ChatGPT for spec writing but it doesn't know their product, their customers, or their standards.
+> "I heard a song at a party last weekend and I've been trying to find it ever since. I know the chorus but not the name. I've downloaded three wrong songs from Napster already."
 
-## What Would Make Them Switch
+> "I pay $15 for a CD and I only like 3 songs on it. That's $5 per song I actually want. That's insane."
 
-- AI that understands their product context (customer segments, technical constraints, past decisions)
-- A validation funnel that enforces rigor without slowing teams down
-- Integration with their existing tools (GitHub, Slack, Figma)
-- Must work for teams of 10-50 PMs, not just solo practitioners
+> "My roommate has amazing taste in music but I can't just browse his library. He has to physically hand me a CD or burn me a copy."
 
-## Willingness to Pay
+> "I'm scared I'm going to get sued. My friend got a letter from the RIAA for downloading 30 songs."
 
-- $50-80/seat/month for PM tooling
-- Would pay more if it demonstrably reduced time-to-spec by 50%+
-- Budget owner: VP Product (her), approved by CTO
+## What Jake Wants
 
-## Follow-up
-
-- Agreed to pilot with her billing platform team (4 PMs)
-- Wants to see: AI-assisted spec writing with product context
-- Timeline: Needs decision by end of Q2 2026
+1. Listen to any song instantly without downloading it
+2. Pay for music without paying $15 per album
+3. See what his friends are listening to
+4. Not get sued

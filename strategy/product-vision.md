@@ -1,49 +1,22 @@
-# Studio AI — Product Vision
+# Wavelength — Product Vision
 
-**Last updated:** March 2026
+## The Problem
 
----
+People love music but hate how they get it. CDs are expensive and wasteful — you pay $15 for 2 good songs. Napster is free but illegal, unreliable, and full of viruses. iTunes lets you buy individual songs but you still have to download and sync them. Nobody has solved "listen to anything, anywhere, right now."
 
-## Mission
+## The Idea
 
-Make every product team operate like the best product team in the world — by embedding AI deeply into the product development workflow, not bolting it on as an afterthought.
+A music streaming service. No downloads, no CDs, no syncing. Search for a song, press play. Every song ever recorded, available instantly, for a flat monthly fee.
 
-## Vision (3-Year)
+## Why Now
 
-Studio AI becomes the operating system for product teams. Every idea flows through a structured validation process, informed by real customer context, with AI agents handling the repetitive work so PMs can focus on judgment calls.
+- Broadband is finally fast enough to stream audio in real-time
+- Record labels are desperate — CD sales down 40% since 2000, they need a new revenue model
+- Napster proved the demand exists — 80 million users at peak. People want instant access. They just need a legal way to do it.
 
-By 2028:
-- 1,000+ product teams use Studio AI daily
-- AI agents handle 60% of spec writing, task breakdown, and status tracking
-- Every spec is grounded in customer evidence, not opinion
-- Product decisions are traceable from customer signal → hypothesis → experiment → outcome
+## How We Win
 
-## Core Beliefs
-
-1. **Context is everything.** Generic AI is useless for product work. The AI must understand your customers, your product, your constraints, and your team's conventions.
-
-2. **Structure enables creativity.** A validation funnel isn't bureaucracy — it's a thinking framework. The best PMs already do this; we just make it systematic.
-
-3. **Agents should do work, not just answer questions.** Chatbots are demos. Agents that write specs, create tasks, review PRs, and monitor deployments are products.
-
-4. **The spec is the product.** If the spec is wrong, everything downstream is wrong. Investing in spec quality has 10x leverage.
-
-## Target Customer
-
-**Primary:** Product managers at B2B SaaS companies (Series A–C, 50–500 employees) who manage 2–5 products and work with 5–20 engineers.
-
-**Secondary:** Engineering managers who want better specs from their PM counterparts.
-
-**Anti-persona:** Solo founders, enterprise companies with 500+ PMs (too much process customization needed), consumer product teams.
-
-## Competitive Positioning
-
-| | Studio AI | Productboard | Linear | ChatGPT/Cursor |
-|---|---|---|---|---|
-| Spec writing | AI-assisted with context | Manual | N/A | Generic, no context |
-| Validation process | Built-in funnel | Feature voting | N/A | N/A |
-| Product context | GitHub + KB + docs | Feedback only | N/A | N/A |
-| Agent automation | Full SDLC agents | N/A | N/A | Code only |
-| Team collaboration | Owner + reviewer model | Full team | Full team | Individual |
-
-**Our moat:** Deep product context integration. Competitors either do tracking (Productboard) or AI (ChatGPT) but nobody does both with real product context.
+1. **Free tier with ads** — Get users hooked, convert to premium later
+2. **Social features** — See what friends are playing, share playlists
+3. **Pay the labels** — Per-stream royalties so artists actually get paid
+4. **Work everywhere** — Phone, computer, car, speakers. Your library follows you.
