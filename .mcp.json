@@ -1,8 +1,9 @@
 {
+  "_comment": "Requires studio-model-main checked out as a sibling at ../studio-model/studio-model-main. Run 'npm run build' in the MCP server first.",
   "mcpServers": {
     "studio-nits": {
       "command": "node",
-      "args": ["/Users/timothycochran/work/studio-model/studio-model-4-tuna/apps/mcp-server/dist/index.js"],
+      "args": ["../studio-model/studio-model-main/apps/mcp-server/dist/index.js"],
       "env": {
         "ORG_CODE": "demo1",
         "STUDIO_CODE": "demo1-studio-b",
