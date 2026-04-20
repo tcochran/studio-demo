@@ -1,0 +1,92 @@
+[
+  {
+    "id": "ai-101",
+    "title": "AI Fluency for Everyone",
+    "category": "Fundamentals",
+    "type": "course",
+    "duration": "60 min",
+    "required": true,
+    "description": "What AI is, how it works at a high level, and how it's changing our industry. No technical background needed."
+  },
+  {
+    "id": "ai-102",
+    "title": "Prompt Engineering Essentials",
+    "category": "Fundamentals",
+    "type": "course",
+    "duration": "45 min",
+    "required": true,
+    "description": "How to write effective prompts, iterate on outputs, and get reliable results from LLMs."
+  },
+  {
+    "id": "ai-103",
+    "title": "AI Ethics & Responsible Use",
+    "category": "Fundamentals",
+    "type": "course",
+    "duration": "30 min",
+    "required": true,
+    "description": "Bias, hallucinations, data privacy, and company policy on AI-generated content."
+  },
+  {
+    "id": "ai-201",
+    "title": "AI-Assisted Coding",
+    "category": "Engineering",
+    "type": "course",
+    "duration": "90 min",
+    "required": false,
+    "description": "Using Copilot and Claude Code for code generation, refactoring, debugging, and test writing."
+  },
+  {
+    "id": "ai-202",
+    "title": "Building with LLM APIs",
+    "category": "Engineering",
+    "type": "course",
+    "duration": "120 min",
+    "required": false,
+    "description": "Integrating the Claude API into applications — tool use, streaming, structured outputs, and error handling."
+  },
+  {
+    "id": "ai-301",
+    "title": "AI for Product Managers",
+    "category": "Product",
+    "type": "course",
+    "duration": "60 min",
+    "required": false,
+    "description": "Evaluating AI opportunities, writing AI-feature specs, and understanding model capabilities and limitations."
+  },
+  {
+    "id": "ai-302",
+    "title": "AI for Customer-Facing Teams",
+    "category": "Business",
+    "type": "course",
+    "duration": "45 min",
+    "required": false,
+    "description": "Using AI for drafting proposals, summarizing calls, and answering customer questions accurately."
+  },
+  {
+    "id": "ws-101",
+    "title": "Hands-On: Build Your First AI Agent",
+    "category": "Engineering",
+    "type": "workshop",
+    "duration": "3 hrs",
+    "required": false,
+    "description": "Live workshop. Build a simple agent with tool use that can search docs and answer questions. Bring your laptop."
+  },
+  {
+    "id": "ws-102",
+    "title": "Hands-On: AI Writing & Communication",
+    "category": "Business",
+    "type": "workshop",
+    "duration": "2 hrs",
+    "required": false,
+    "description": "Live workshop. Practice using AI to draft emails, reports, and presentations. Includes peer review exercises."
+  },
+  {
+    "id": "ws-103",
+    "title": "Hands-On: Evaluating AI Outputs",
+    "category": "Fundamentals",
+    "type": "workshop",
+    "duration": "90 min",
+    "required": false,
+    "description": "Live workshop. Learn to spot hallucinations, verify facts, and build checklists for reviewing AI-generated work."
+  }
+]
