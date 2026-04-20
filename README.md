@@ -23,6 +23,11 @@ Tasks are managed via the **studio-nits MCP server**, which exposes tools for ta
 6. **Multi-step planning** — If a task is too large, promote it to an idea with `create_idea`, break it into subtasks with `create_task(ideaNumber)`, then finish the original task. The idea's task list becomes the plan.
 7. **Finish** — Call `finish_task` once the PR is merged. Reviewers can request changes or approve.
 
+## Team
+
+- **Tim Cochran** — Team member
+- **Cassie** — Team member
+
 ## Getting Started
 
 ```bash
