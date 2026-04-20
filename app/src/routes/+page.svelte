@@ -1,32 +1,57 @@
 <script lang="ts">
 	let { data } = $props();
+
+	const courses = data.trainings.filter((t: any) => t.type === 'course');
+	const workshops = data.trainings.filter((t: any) => t.type === 'workshop');
 </script>
 
 <div class="container">
 	<header>
-		<h1>Training Portal</h1>
-		<p class="subtitle">Required and optional training courses for all employees</p>
+		<h1>AI Fluency Training Portal</h1>
+		<p class="subtitle">Courses and workshops to build AI skills across the organization</p>
 	</header>
 
-	<div class="training-list">
-		{#each data.trainings as training (training.id)}
-			<div class="training-card">
-				<div class="card-header">
-					<h2>{training.title}</h2>
-					{#if training.required}
-						<span class="badge required">Required</span>
-					{:else}
-						<span class="badge optional">Optional</span>
-					{/if}
+	<section>
+		<h2 class="section-title">Courses</h2>
+		<div class="training-list">
+			{#each courses as training (training.id)}
+				<div class="training-card">
+					<div class="card-header">
+						<h3>{training.title}</h3>
+						{#if training.required}
+							<span class="badge required">Required</span>
+						{:else}
+							<span class="badge optional">Optional</span>
+						{/if}
+					</div>
+					<p class="description">{training.description}</p>
+					<div class="meta">
+						<span class="category">{training.category}</span>
+						<span class="duration">{training.duration}</span>
+					</div>
 				</div>
-				<p class="description">{training.description}</p>
-				<div class="meta">
-					<span class="category">{training.category}</span>
-					<span class="duration">{training.duration}</span>
+			{/each}
+		</div>
+	</section>
+
+	<section>
+		<h2 class="section-title">Workshops</h2>
+		<div class="training-list">
+			{#each workshops as training (training.id)}
+				<div class="training-card workshop">
+					<div class="card-header">
+						<h3>{training.title}</h3>
+						<span class="badge workshop-badge">Workshop</span>
+					</div>
+					<p class="description">{training.description}</p>
+					<div class="meta">
+						<span class="category">{training.category}</span>
+						<span class="duration">{training.duration}</span>
+					</div>
 				</div>
-			</div>
-		{/each}
-	</div>
+			{/each}
+		</div>
+	</section>
 </div>
 
 <style>
@@ -54,6 +79,15 @@
 		font-size: 0.95rem;
 	}
 
+	.section-title {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: #333;
+		margin: 2rem 0 1rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid #e2e2e2;
+	}
+
 	.training-list {
 		display: flex;
 		flex-direction: column;
@@ -67,6 +101,10 @@
 		background: #fff;
 	}
 
+	.training-card.workshop {
+		border-left: 3px solid #7c3aed;
+	}
+
 	.card-header {
 		display: flex;
 		align-items: center;
@@ -75,7 +113,7 @@
 		margin-bottom: 0.5rem;
 	}
 
-	h2 {
+	h3 {
 		font-size: 1rem;
 		font-weight: 600;
 		color: #111;
@@ -100,6 +138,11 @@
 	.badge.optional {
 		background: #f0f9ff;
 		color: #1d4ed8;
+	}
+
+	.badge.workshop-badge {
+		background: #f5f3ff;
+		color: #7c3aed;
 	}
 
 	.description {

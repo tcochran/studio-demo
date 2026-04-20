@@ -1,66 +1,92 @@
 [
   {
-    "id": "sec-101",
-    "title": "Information Security Awareness",
-    "category": "Security",
-    "duration": "45 min",
+    "id": "ai-101",
+    "title": "AI Fluency for Everyone",
+    "category": "Fundamentals",
+    "type": "course",
+    "duration": "60 min",
     "required": true,
-    "description": "Annual security training covering phishing, password hygiene, and data classification."
+    "description": "What AI is, how it works at a high level, and how it's changing our industry. No technical background needed."
   },
   {
-    "id": "compl-201",
-    "title": "Code of Conduct",
-    "category": "Compliance",
+    "id": "ai-102",
+    "title": "Prompt Engineering Essentials",
+    "category": "Fundamentals",
+    "type": "course",
+    "duration": "45 min",
+    "required": true,
+    "description": "How to write effective prompts, iterate on outputs, and get reliable results from LLMs."
+  },
+  {
+    "id": "ai-103",
+    "title": "AI Ethics & Responsible Use",
+    "category": "Fundamentals",
+    "type": "course",
     "duration": "30 min",
     "required": true,
-    "description": "Company policies on ethics, conflicts of interest, and workplace behavior."
+    "description": "Bias, hallucinations, data privacy, and company policy on AI-generated content."
   },
   {
-    "id": "compl-202",
-    "title": "Anti-Harassment Training",
-    "category": "Compliance",
-    "duration": "60 min",
-    "required": true,
-    "description": "Recognizing, preventing, and reporting workplace harassment."
-  },
-  {
-    "id": "safety-301",
-    "title": "Workplace Safety Fundamentals",
-    "category": "Safety",
-    "duration": "20 min",
-    "required": false,
-    "description": "Office ergonomics, emergency procedures, and incident reporting."
-  },
-  {
-    "id": "dev-401",
-    "title": "Secure Coding Practices",
+    "id": "ai-201",
+    "title": "AI-Assisted Coding",
     "category": "Engineering",
+    "type": "course",
     "duration": "90 min",
     "required": false,
-    "description": "OWASP top 10, input validation, and secure development lifecycle."
+    "description": "Using Copilot and Claude Code for code generation, refactoring, debugging, and test writing."
   },
   {
-    "id": "lead-501",
-    "title": "Manager Essentials",
-    "category": "Leadership",
+    "id": "ai-202",
+    "title": "Building with LLM APIs",
+    "category": "Engineering",
+    "type": "course",
     "duration": "120 min",
     "required": false,
-    "description": "Performance reviews, 1:1s, giving feedback, and team development."
+    "description": "Integrating the Claude API into applications — tool use, streaming, structured outputs, and error handling."
   },
   {
-    "id": "priv-601",
-    "title": "Data Privacy & GDPR",
-    "category": "Compliance",
-    "duration": "45 min",
-    "required": true,
-    "description": "Handling personal data, data subject rights, and breach notification procedures."
-  },
-  {
-    "id": "onb-701",
-    "title": "New Hire Orientation",
-    "category": "Onboarding",
+    "id": "ai-301",
+    "title": "AI for Product Managers",
+    "category": "Product",
+    "type": "course",
     "duration": "60 min",
-    "required": true,
-    "description": "Company history, org structure, benefits overview, and key contacts."
+    "required": false,
+    "description": "Evaluating AI opportunities, writing AI-feature specs, and understanding model capabilities and limitations."
+  },
+  {
+    "id": "ai-302",
+    "title": "AI for Customer-Facing Teams",
+    "category": "Business",
+    "type": "course",
+    "duration": "45 min",
+    "required": false,
+    "description": "Using AI for drafting proposals, summarizing calls, and answering customer questions accurately."
+  },
+  {
+    "id": "ws-101",
+    "title": "Hands-On: Build Your First AI Agent",
+    "category": "Engineering",
+    "type": "workshop",
+    "duration": "3 hrs",
+    "required": false,
+    "description": "Live workshop. Build a simple agent with tool use that can search docs and answer questions. Bring your laptop."
+  },
+  {
+    "id": "ws-102",
+    "title": "Hands-On: AI Writing & Communication",
+    "category": "Business",
+    "type": "workshop",
+    "duration": "2 hrs",
+    "required": false,
+    "description": "Live workshop. Practice using AI to draft emails, reports, and presentations. Includes peer review exercises."
+  },
+  {
+    "id": "ws-103",
+    "title": "Hands-On: Evaluating AI Outputs",
+    "category": "Fundamentals",
+    "type": "workshop",
+    "duration": "90 min",
+    "required": false,
+    "description": "Live workshop. Learn to spot hallucinations, verify facts, and build checklists for reviewing AI-generated work."
   }
 ]
