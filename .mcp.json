@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "studio-nits": {
+      "command": "node",
+      "args": ["/Users/timothycochran/work/studio-model/studio-model-4-tuna/apps/mcp-server/dist/index.js"],
+      "env": {
+        "ORG_CODE": "demo1",
+        "STUDIO_CODE": "demo1-studio-b",
+        "PRODUCT_CODE": "ai-training",
+        "STUDIO_API_KEY": "test-api-key-12345"
+      }
+    }
+  }
+}
