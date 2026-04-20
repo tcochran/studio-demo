@@ -1,6 +1,6 @@
 # AI Training Tracker
 
-Internal training portal for AI fluency courses and workshops. Built with SvelteKit.
+An internal training portal that helps organizations track AI fluency courses and workshops. Built with SvelteKit, the app displays training offerings — categorized as courses or workshops — with details like duration, category, and whether they're required or optional.
 
 ## Getting Started
 
