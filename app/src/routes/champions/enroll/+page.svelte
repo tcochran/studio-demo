@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { base } from '$app/paths';
 
 	let { data, form } = $props();
 </script>
 
 <div class="container">
 	<header>
-		<nav class="breadcrumb"><a href="/">Training Portal</a> / <a href="/champions">Champions</a> / Enroll</nav>
+		<nav class="breadcrumb"><a href="{base}/">Training Portal</a> / <a href="{base}/champions">Champions</a> / Enroll</nav>
 		<h1>Become an AI Champion</h1>
 		<p class="subtitle">Join the directory and help drive AI adoption across the organization</p>
 	</header>

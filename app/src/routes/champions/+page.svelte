@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	let { data } = $props();
 
 	let searchQuery = $state('');
@@ -23,10 +24,10 @@
 
 <div class="container">
 	<header>
-		<nav class="breadcrumb"><a href="/">Training Portal</a> / Champions</nav>
+		<nav class="breadcrumb"><a href="{base}/">Training Portal</a> / Champions</nav>
 		<h1>AI Champions Directory</h1>
 		<p class="subtitle">Meet the AI champions driving adoption across the organization</p>
-		<a href="/champions/enroll" class="enroll-link">Become a Champion</a>
+		<a href="{base}/champions/enroll" class="enroll-link">Become a Champion</a>
 	</header>
 
 	<div class="filters">
