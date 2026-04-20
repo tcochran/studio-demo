@@ -8,7 +8,8 @@
         "ORG_CODE": "demo1",
         "STUDIO_CODE": "demo1-studio-b",
         "PRODUCT_CODE": "ai-training",
-        "STUDIO_API_KEY": "test-api-key-12345"
+        "STUDIO_API_KEY": "test-api-key-12345",
+        "AGENT_NAME": "demo"
       }
     }
   }
