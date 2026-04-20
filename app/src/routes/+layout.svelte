@@ -1,6 +1,5 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
-	import { base } from '$app/paths';
 	import { page } from '$app/state';
 
 	let { children } = $props();
@@ -11,8 +10,8 @@
 </svelte:head>
 
 <nav class="top-nav">
-	<a href="{base}/" class:active={page.url.pathname === base + '/'}>Training</a>
-	<a href="{base}/champions" class:active={page.url.pathname === base + '/champions'}>Champions</a>
+	<a href="/" class:active={page.url.pathname === '/'}>Training</a>
+	<a href="/champions" class:active={page.url.pathname === '/champions'}>Champions</a>
 </nav>
 
 {@render children()}
