@@ -1,0 +1,66 @@
+[
+  {
+    "id": "sec-101",
+    "title": "Information Security Awareness",
+    "category": "Security",
+    "duration": "45 min",
+    "required": true,
+    "description": "Annual security training covering phishing, password hygiene, and data classification."
+  },
+  {
+    "id": "compl-201",
+    "title": "Code of Conduct",
+    "category": "Compliance",
+    "duration": "30 min",
+    "required": true,
+    "description": "Company policies on ethics, conflicts of interest, and workplace behavior."
+  },
+  {
+    "id": "compl-202",
+    "title": "Anti-Harassment Training",
+    "category": "Compliance",
+    "duration": "60 min",
+    "required": true,
+    "description": "Recognizing, preventing, and reporting workplace harassment."
+  },
+  {
+    "id": "safety-301",
+    "title": "Workplace Safety Fundamentals",
+    "category": "Safety",
+    "duration": "20 min",
+    "required": false,
+    "description": "Office ergonomics, emergency procedures, and incident reporting."
+  },
+  {
+    "id": "dev-401",
+    "title": "Secure Coding Practices",
+    "category": "Engineering",
+    "duration": "90 min",
+    "required": false,
+    "description": "OWASP top 10, input validation, and secure development lifecycle."
+  },
+  {
+    "id": "lead-501",
+    "title": "Manager Essentials",
+    "category": "Leadership",
+    "duration": "120 min",
+    "required": false,
+    "description": "Performance reviews, 1:1s, giving feedback, and team development."
+  },
+  {
+    "id": "priv-601",
+    "title": "Data Privacy & GDPR",
+    "category": "Compliance",
+    "duration": "45 min",
+    "required": true,
+    "description": "Handling personal data, data subject rights, and breach notification procedures."
+  },
+  {
+    "id": "onb-701",
+    "title": "New Hire Orientation",
+    "category": "Onboarding",
+    "duration": "60 min",
+    "required": true,
+    "description": "Company history, org structure, benefits overview, and key contacts."
+  }
+]
