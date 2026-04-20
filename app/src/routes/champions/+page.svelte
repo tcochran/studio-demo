@@ -26,6 +26,7 @@
 		<nav class="breadcrumb"><a href="/">Training Portal</a> / Champions</nav>
 		<h1>AI Champions Directory</h1>
 		<p class="subtitle">Meet the AI champions driving adoption across the organization</p>
+		<a href="/champions/enroll" class="enroll-link">Become a Champion</a>
 	</header>
 
 	<div class="filters">
@@ -127,6 +128,22 @@
 		color: #666;
 		margin: 0.25rem 0 0;
 		font-size: 0.95rem;
+	}
+
+	.enroll-link {
+		display: inline-block;
+		margin-top: 0.75rem;
+		padding: 0.5rem 1rem;
+		background: #1d4ed8;
+		color: #fff;
+		text-decoration: none;
+		border-radius: 6px;
+		font-size: 0.85rem;
+		font-weight: 600;
+	}
+
+	.enroll-link:hover {
+		background: #1e40af;
 	}
 
 	.filters {
