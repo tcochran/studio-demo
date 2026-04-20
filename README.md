@@ -21,7 +21,21 @@ Tasks are managed via the **studio-nits MCP server**, which exposes tools for ta
 4. **Do the work** — Implement the change and commit to the feature branch.
 5. **Open a PR** — Push the branch and open a pull request. Attach the PR to the Studio task using `update_task` so reviewers have full context.
 6. **Multi-step planning** — If a task is too large, promote it to an idea with `create_idea`, break it into subtasks with `create_task(ideaNumber)`, then finish the original task. The idea's task list becomes the plan.
-7. **Finish** — Call `finish_task` once the PR is merged. Reviewers can request changes or approve.
+7. **Finish** — Call `finish_task` once the work is complete. What happens next depends on whether a PR is attached:
+
+### Review Flow
+
+When an agent finishes a task, the review process works as follows:
+
+1. **Standards check** — On the first call to `finish_task`, Studio surfaces the project's quality standards for the agent to review. The agent must confirm it has reviewed these standards (`confirmStandards: true`) before the task can proceed.
+2. **PR-based review** — If pull requests are attached to the task (via `update_task`), the task moves to `review` status for human approval. Reviewers — assigned when the task is created or updated — evaluate the PR and can:
+   - **Approve** — The task moves to `done`.
+   - **Request changes** — The task returns to `inProgress` for the agent to address feedback.
+3. **Direct completion** — If no pull requests are attached, the task moves straight to `done`, bypassing human review.
+
+#### Assigning reviewers
+
+Reviewers are Studio users specified by email. They can be set when creating a task (`create_task`) or added later (`update_task`). Assigning reviewers ensures that the right people are notified when the task enters review.
 
 ## Getting Started
 
