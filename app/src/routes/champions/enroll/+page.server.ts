@@ -2,6 +2,8 @@ import { readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { fail, redirect } from '@sveltejs/kit';
 
+export const prerender = false;
+
 const SKILLS = [
 	'AI Ethics',
 	'AI Strategy',
