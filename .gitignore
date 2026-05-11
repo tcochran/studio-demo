@@ -1,0 +1,15 @@
+node_modules
+.npm
+.svelte-kit
+build
+dist
+.DS_Store
+
+# Env
+.env
+.env.*
+!.env.example
+.envrc
+
+# Claude Code — user-specific config
+.claude/settings.local.json

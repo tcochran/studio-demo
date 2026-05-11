@@ -1,15 +1,13 @@
 {
-  "_comment": "Requires studio-model checked out as a sibling. Update the path to match your worktree.",
+  "_comment": "Studio AI MCP — HTTP transport. Requires STUDIO_API_KEY env var (ask a platform admin to mint one).",
   "mcpServers": {
-    "studio-nits": {
-      "command": "node",
-      "args": ["../studio-model/studio-model-4-tuna/apps/mcp-server/dist/index.js"],
-      "env": {
-        "ORG_CODE": "demo1",
-        "STUDIO_CODE": "demo1-studio-b",
-        "PRODUCT_CODE": "ai-training",
-        "STUDIO_API_KEY": "test-api-key-12345",
-        "AGENT_NAME": "demo"
+    "studio-ai": {
+      "type": "http",
+      "url": "https://studio-ai-one.vercel.app/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${STUDIO_API_KEY}",
+        "x-product-code": "ai-learning-portal",
+        "x-agent-name": "${STUDIO_AGENT_NAME:-demo}"
       }
     }
   }
