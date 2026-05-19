@@ -13,6 +13,7 @@
 <nav class="top-nav">
 	<a href="{base}/" class:active={page.url.pathname === base + '/'}>Training</a>
 	<a href="{base}/champions" class:active={page.url.pathname === base + '/champions'}>Champions</a>
+	<a href="{base}/ideas" class:active={page.url.pathname === base + '/ideas'}>Ideas</a>
 </nav>
 
 {@render children()}
