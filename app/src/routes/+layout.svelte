@@ -18,6 +18,10 @@
 {@render children()}
 
 <style>
+	:global(body) {
+		background-color: #0f172a;
+	}
+
 	.top-nav {
 		max-width: 800px;
 		margin: 0 auto;
