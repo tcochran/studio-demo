@@ -1,0 +1,88 @@
+
+> app@0.0.1 check
+> svelte-kit sync && svelte-check --tsconfig ./tsconfig.json
+
+Loading svelte-check in workspace: /workspace/studio-demo/app
+Getting Svelte diagnostics...
+
+/workspace/studio-demo/app/src/routes/+page.server.ts:1:30
+Error: Cannot find name 'fs'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig. 
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+/workspace/studio-demo/app/src/routes/+page.server.ts:2:25
+Error: Cannot find name 'path'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig. 
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+/workspace/studio-demo/app/src/routes/champions/+page.server.ts:1:30
+Error: Cannot find name 'fs'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig. 
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+/workspace/studio-demo/app/src/routes/champions/+page.server.ts:2:25
+Error: Cannot find name 'path'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig. 
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+/workspace/studio-demo/app/src/routes/champions/enroll/+page.server.ts:1:45
+Error: Cannot find name 'fs'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig. 
+import { readFileSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
+
+/workspace/studio-demo/app/src/routes/champions/enroll/+page.server.ts:2:25
+Error: Cannot find name 'path'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig. 
+import { readFileSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
+import { fail, redirect } from '@sveltejs/kit';
+
+/workspace/studio-demo/app/src/routes/champions/page.server.test.ts:78:44
+Error: No overload matches this call.
+  Overload 1 of 2, '(predicate: (value: unknown, index: number, array: unknown[]) => value is "Python", thisArg?: any): "Python"[]', gave the following error.
+    Argument of type '(s: string) => s is "Python"' is not assignable to parameter of type '(value: unknown, index: number, array: unknown[]) => value is "Python"'.
+      Types of parameters 's' and 'value' are incompatible.
+        Type 'unknown' is not assignable to type 'string'.
+  Overload 2 of 2, '(predicate: (value: unknown, index: number, array: unknown[]) => unknown, thisArg?: any): unknown[]', gave the following error.
+    Argument of type '(s: string) => s is "Python"' is not assignable to parameter of type '(value: unknown, index: number, array: unknown[]) => unknown'.
+      Types of parameters 's' and 'value' are incompatible.
+        Type 'unknown' is not assignable to type 'string'. 
+		const result = load();
+		const pythonCount = result.skills.filter((s: string) => s === 'Python').length;
+		expect(pythonCount).toBe(1);
+
+/workspace/studio-demo/app/src/routes/champions/page.server.test.ts:84:43
+Error: No overload matches this call.
+  Overload 1 of 2, '(predicate: (value: unknown, index: number, array: unknown[]) => value is "New York, NY", thisArg?: any): "New York, NY"[]', gave the following error.
+    Argument of type '(l: string) => l is "New York, NY"' is not assignable to parameter of type '(value: unknown, index: number, array: unknown[]) => value is "New York, NY"'.
+      Types of parameters 'l' and 'value' are incompatible.
+        Type 'unknown' is not assignable to type 'string'.
+  Overload 2 of 2, '(predicate: (value: unknown, index: number, array: unknown[]) => unknown, thisArg?: any): unknown[]', gave the following error.
+    Argument of type '(l: string) => l is "New York, NY"' is not assignable to parameter of type '(value: unknown, index: number, array: unknown[]) => unknown'.
+      Types of parameters 'l' and 'value' are incompatible.
+        Type 'unknown' is not assignable to type 'string'. 
+		const result = load();
+		const nyCount = result.locations.filter((l: string) => l === 'New York, NY').length;
+		expect(nyCount).toBe(1);
+
+/workspace/studio-demo/app/src/routes/champions/enroll/page.server.test.ts:208:42
+Error: Cannot find name 'fs'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig. 
+	it('does not write to file on validation failure', async () => {
+		const { writeFileSync } = await import('fs');
+		const request = createRequest({ ...validFields, name: '' });
+
+/workspace/studio-demo/app/src/routes/+page.svelte:4:18
+Warn: This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally (svelte)
+
+	const courses = data.trainings.filter((t: any) => t.type === 'course');
+	const workshops = data.trainings.filter((t: any) => t.type === 'workshop');
+
+/workspace/studio-demo/app/src/routes/+page.svelte:5:20
+Warn: This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally (svelte)
+	const courses = data.trainings.filter((t: any) => t.type === 'course');
+	const workshops = data.trainings.filter((t: any) => t.type === 'workshop');
+</script>
+
+====================================
+svelte-check found 9 errors and 2 warnings in 6 files
