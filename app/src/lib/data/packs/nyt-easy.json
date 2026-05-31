@@ -83,6 +83,22 @@
       "correctIndex": 2,
       "difficulty": 1,
       "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+    },
+    {
+      "id": "ne-11",
+      "prompt": "Which ocean is the largest?",
+      "choices": ["Atlantic", "Indian", "Arctic", "Pacific"],
+      "correctIndex": 3,
+      "difficulty": 1,
+      "explanation": "The Pacific Ocean covers more than 30% of Earth's surface, making it the largest."
+    },
+    {
+      "id": "ne-12",
+      "prompt": "How many letters are in the English alphabet?",
+      "choices": ["24", "25", "26", "27"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "The modern English alphabet has 26 letters, from A to Z."
     }
   ]
 }
