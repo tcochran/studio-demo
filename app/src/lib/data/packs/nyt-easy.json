@@ -83,6 +83,14 @@
       "correctIndex": 2,
       "difficulty": 1,
       "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+    },
+    {
+      "id": "ne-11",
+      "prompt": "Animal known as man's best friend:",
+      "choices": ["Cat", "Dog", "Rabbit", "Hamster"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Dogs have been loyal human companions for tens of thousands of years."
     }
   ]
 }
