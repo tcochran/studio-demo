@@ -83,6 +83,14 @@
       "correctIndex": 2,
       "difficulty": 1,
       "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+    },
+    {
+      "id": "ne-11",
+      "prompt": "How many days are in a week:",
+      "choices": ["Five", "Six", "Seven", "Eight"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Seven days: Monday through Sunday."
     }
   ]
 }
