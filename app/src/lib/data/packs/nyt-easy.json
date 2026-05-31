@@ -6,7 +6,7 @@
   "questions": [
     {
       "id": "ne-1",
-      "prompt": "Tropical orange-fleshed stone fruit, five letters:",
+      "prompt": "Tropical orange-fleshed stone fruit with five letters:",
       "choices": ["Peach", "Mango", "Guava", "Melon"],
       "correctIndex": 1,
       "difficulty": 1,
