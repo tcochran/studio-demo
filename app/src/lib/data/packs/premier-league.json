@@ -6,7 +6,7 @@
   "questions": [
     {
       "id": "pl-1",
-      "prompt": "Who is the Premier League's all-time top scorer?",
+      "prompt": "Who holds the record as the Premier League's all-time leading scorer?",
       "choices": ["Wayne Rooney", "Alan Shearer", "Harry Kane", "Sergio Agüero"],
       "correctIndex": 1,
       "difficulty": 1,
