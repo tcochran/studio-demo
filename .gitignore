@@ -1,0 +1,9 @@
+# Per-worktree scratch logs (npm install, build, dev-server output)
+/logs/
+
+# Per-worktree Codex settings may contain local MCP tokens.
+/.codex/
+
+# OS
+.DS_Store
+Thumbs.db

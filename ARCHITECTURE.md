@@ -1,101 +1,95 @@
 # Architecture
 
-High-level architecture overview for the AI Training Tracker.
+High-level overview of Quiz Lab.
 
 ## Overview
 
-AI Training Tracker is an internal training portal built with SvelteKit that helps organizations track AI fluency courses and workshops. It serves as a single source of truth for AI training status across teams.
+Quiz Lab is a static SvelteKit app. Trivia packs live as JSON files in the repo. Adding a pack is editing a file and opening a PR — that's the whole content workflow on day one.
+
+There is intentionally no backend in v1. Scores, leaderboards, and feedback persistence are tracked as future ideas in studio-ai and will land as additive layers (likely against the existing `agent-api` AppSync + DynamoDB stack).
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| Framework | SvelteKit 2 + Svelte 5 (Runes mode) |
-| Language | TypeScript (strict mode) |
+| Framework | SvelteKit 2 + Svelte 5 (runes mode) |
+| Language | TypeScript (strict) |
 | Build | Vite 8 |
-| Deployment | SvelteKit adapter-auto |
-| Task Management | Studio.ai MCP Server (studio-nits) |
+| Deployment | `@sveltejs/adapter-static` → GitHub Pages |
+| Tests | Vitest |
+| Task management | studio-ai MCP server (`.mcp.json`) |
 
 ## Project Structure
 
 ```
-studio-demo/
-├── app/                        # SvelteKit application
+product-demo-template/
+├── app/
 │   ├── src/
-│   │   ├── routes/             # Pages and server loaders
-│   │   │   ├── +layout.svelte  # Root layout
-│   │   │   ├── +page.svelte    # Home page (training list)
-│   │   │   └── +page.server.ts # Server-side data loading
+│   │   ├── routes/
+│   │   │   ├── +layout.svelte         # Top nav + global styling
+│   │   │   ├── +layout.ts             # prerender = true
+│   │   │   ├── +page.svelte           # Pack picker (home)
+│   │   │   ├── +page.server.ts        # Loads all packs
+│   │   │   └── play/[pack]/
+│   │   │       ├── +page.svelte       # Play screen
+│   │   │       └── +page.server.ts    # Loads one pack
 │   │   └── lib/
-│   │       ├── data/           # Static data (trainings.json)
-│   │       └── assets/         # Favicon and static assets
-│   ├── static/                 # Public static files
-│   ├── svelte.config.js        # Svelte configuration
-│   └── vite.config.ts          # Vite configuration
-├── .mcp.json                   # MCP server configuration
-├── planning/                   # Planning documents
-├── strategy/                   # Strategy documents
-└── customer-research/          # Customer feedback and research
+│   │       ├── packs.ts               # Pack loader + types
+│   │       └── data/packs/            # One JSON file per pack
+│   │           ├── premier-league.json
+│   │           └── nyt-easy.json
+│   ├── svelte.config.js
+│   └── vite.config.ts
+├── .github/workflows/                 # GitHub Pages deploy + PR preview
+├── .mcp.json                          # studio-ai MCP wiring
+├── README.md
+└── VISION.md
 ```
 
 ## Data Flow
 
 ```
-Browser Request
-      │
-      ▼
-SvelteKit Router
-      │
-      ▼
-+page.server.ts ── reads ──▶ trainings.json
-      │
-      ▼
-+page.svelte (receives data via $props())
-      │
-      ▼
-Renders courses & workshops to browser
+Browser → SvelteKit router → +page.server.ts → packs.ts → JSON files on disk
+                                                            │
+                                                            ▼
+                                              +page.svelte renders pack list / play screen
 ```
 
-There is no backend API layer or database. Training data is stored as static JSON and loaded server-side via Node.js `fs` at request time.
+Everything is prerendered at build time (`adapter-static` + `prerender = true`), so there is no server runtime. The app deploys to GitHub Pages as static files.
 
 ## Data Model
 
-Training entries contain:
+A pack:
 
-- **id** — Unique identifier
-- **title** — Training name
-- **category** — Fundamentals, Engineering, Product, or Business
-- **type** — `course` or `workshop`
-- **duration** — Length (e.g., "60 min", "3 hrs")
-- **required** — Boolean (required vs. optional)
-- **description** — Training description
+```ts
+{
+  id: string;            // URL slug, e.g. "premier-league"
+  title: string;         // "Premier League Trivia"
+  category: string;      // "Sports", "Word play", etc.
+  description: string;   // One-liner shown on pack card
+  questions: Question[]; // ordered, played in sequence
+}
+```
+
+A question:
+
+```ts
+{
+  id: string;             // unique within the pack
+  prompt: string;
+  choices: [string, string, string, string];
+  correctIndex: 0 | 1 | 2 | 3;
+  difficulty: 1 | 2 | 3;  // 1 = easy, 3 = hard
+  explanation: string;    // shown after answering
+}
+```
 
 ## Key Architectural Decisions
 
 | Decision | Rationale |
 |----------|-----------|
-| Static JSON over database | MVP simplicity; sufficient for current catalog size |
-| Server-side data loading | Leverages SvelteKit's `load()` for SSR; no client-side fetch needed |
-| Svelte Runes mode | Enforced in config for modern, type-safe reactivity |
-| No component library | Scoped CSS in Svelte components; minimal UI complexity |
-| adapter-auto | Flexible deployment to Vercel, Node.js, or static hosting |
-
-## External Integrations
-
-### Studio.ai (studio-nits MCP Server)
-
-Used for AI agent-driven task management:
-
-- Agents register, pick up tasks, create feature branches, and open PRs
-- Workflow: **Backlog → In Progress → Review → Done**
-- Configured in `.mcp.json` with org, studio, and product codes
-
-## Future Considerations
-
-As the project grows beyond MVP, likely additions include:
-
-- Database backend (replacing static JSON)
-- User authentication and enrollment tracking
-- Search and filtering API
-- Admin dashboard for content management
-- Reusable UI component library
+| Static JSON for packs (no DB) | A pack edit is one file change + one PR — keeps the demo loop tight |
+| `adapter-static` + GitHub Pages | Free hosting, no infra to manage, PR previews come for free |
+| Svelte 5 runes mode enforced | Modern reactivity, type-safe, matches studio-ai monorepo conventions |
+| One pack = one file | Trivially parallelizable: multiple agents can author packs without merge conflicts |
+| No scoring persistence in v1 | Scoped out intentionally; future idea in studio-ai |

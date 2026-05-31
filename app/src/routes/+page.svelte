@@ -1,54 +1,42 @@
 <script lang="ts">
-	let { data } = $props();
+	import { base } from '$app/paths';
+	import type { Pack } from '$lib/packs';
 
-	const courses = data.trainings.filter((t: any) => t.type === 'course');
-	const workshops = data.trainings.filter((t: any) => t.type === 'workshop');
+	let { data } = $props();
+	const packs = $derived<Pack[]>(data.packs);
 </script>
 
 <div class="container">
-	<header>
-		<h1>AI Fluency Training Portal</h1>
-		<p class="subtitle">Courses and workshops to build AI skills across the organization</p>
+	<header class="page-header">
+		<div>
+			<p class="eyebrow">Quiz Lab</p>
+			<h1>Pick a pack</h1>
+			<p class="subtitle">Choose a published trivia pack and jump straight into a round.</p>
+		</div>
 	</header>
 
-	<section>
-		<h2 class="section-title">Courses</h2>
-		<div class="training-list">
-			{#each courses as training (training.id)}
-				<div class="training-card">
-					<div class="card-header">
-						<h3>{training.title}</h3>
-						{#if training.required}
-							<span class="badge required">Required</span>
-						{:else}
-							<span class="badge optional">Optional</span>
-						{/if}
-					</div>
-					<p class="description">{training.description}</p>
-					<div class="meta">
-						<span class="category">{training.category}</span>
-						<span class="duration">{training.duration}</span>
-					</div>
-				</div>
-			{/each}
+	<section class="pack-section" aria-labelledby="packs-title">
+		<div class="section-heading">
+			<div>
+				<p class="eyebrow">Published packs</p>
+				<h2 id="packs-title">Play existing quizzes</h2>
+			</div>
+			<span>{packs.length} packs</span>
 		</div>
-	</section>
 
-	<section>
-		<h2 class="section-title">Workshops</h2>
-		<div class="training-list">
-			{#each workshops as training (training.id)}
-				<div class="training-card workshop">
-					<div class="card-header">
-						<h3>{training.title}</h3>
-						<span class="badge workshop-badge">Workshop</span>
+		<div class="pack-grid">
+			{#each packs as pack (pack.id)}
+				<a class="pack-card" href="{base}/play/{pack.id}">
+					<div class="pack-header">
+						<h3>{pack.title}</h3>
+						<span class="category">{pack.category}</span>
 					</div>
-					<p class="description">{training.description}</p>
+					<p class="description">{pack.description}</p>
 					<div class="meta">
-						<span class="category">{training.category}</span>
-						<span class="duration">{training.duration}</span>
+						<span>{pack.questions.length} questions</span>
+						<span class="play">Play -></span>
 					</div>
-				</div>
+				</a>
 			{/each}
 		</div>
 	</section>
@@ -56,112 +44,164 @@
 
 <style>
 	.container {
-		max-width: 800px;
+		max-width: 1080px;
 		margin: 0 auto;
 		padding: 2rem;
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		color: #141414;
 	}
 
-	header {
-		margin-bottom: 2rem;
-	}
-
-	h1 {
-		font-size: 1.75rem;
-		font-weight: 700;
-		color: #111;
-		margin: 0;
-	}
-
-	.subtitle {
-		color: #666;
-		margin: 0.25rem 0 0;
-		font-size: 0.95rem;
-	}
-
-	.section-title {
-		font-size: 1.1rem;
-		font-weight: 600;
-		color: #333;
-		margin: 2rem 0 1rem;
-		padding-bottom: 0.5rem;
-		border-bottom: 1px solid #e2e2e2;
-	}
-
-	.training-list {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.training-card {
-		border: 1px solid #e2e2e2;
-		border-radius: 8px;
-		padding: 1.25rem;
-		background: #fff;
-	}
-
-	.training-card.workshop {
-		border-left: 3px solid #7c3aed;
-	}
-
-	.card-header {
+	.page-header,
+	.section-heading,
+	.pack-header,
+	.meta {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.75rem;
-		margin-bottom: 0.5rem;
+		gap: 1rem;
+	}
+
+	.page-header {
+		margin-bottom: 2rem;
+	}
+
+	.eyebrow {
+		margin: 0 0 0.35rem;
+		color: #0f766e;
+		font-size: 0.74rem;
+		font-weight: 800;
+		letter-spacing: 0;
+		text-transform: uppercase;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		margin-top: 0;
+	}
+
+	h1 {
+		margin-bottom: 0.45rem;
+		font-size: 2.75rem;
+		font-weight: 850;
+		line-height: 1;
+		letter-spacing: 0;
+	}
+
+	h2 {
+		margin-bottom: 0;
+		font-size: 1.25rem;
+		line-height: 1.2;
+		letter-spacing: 0;
 	}
 
 	h3 {
-		font-size: 1rem;
-		font-weight: 600;
-		color: #111;
 		margin: 0;
+		font-size: 1.05rem;
+		line-height: 1.3;
+		letter-spacing: 0;
 	}
 
-	.badge {
-		font-size: 0.7rem;
-		font-weight: 600;
-		padding: 0.2rem 0.5rem;
-		border-radius: 4px;
-		text-transform: uppercase;
-		letter-spacing: 0.03em;
-		white-space: nowrap;
-	}
-
-	.badge.required {
-		background: #fef2f2;
-		color: #b91c1c;
-	}
-
-	.badge.optional {
-		background: #f0f9ff;
-		color: #1d4ed8;
-	}
-
-	.badge.workshop-badge {
-		background: #f5f3ff;
-		color: #7c3aed;
-	}
-
-	.description {
+	.subtitle {
+		max-width: 54ch;
+		margin-bottom: 0;
 		color: #555;
-		font-size: 0.875rem;
-		line-height: 1.5;
-		margin: 0 0 0.75rem;
+		line-height: 1.55;
 	}
 
-	.meta {
-		display: flex;
+	.pack-section {
+		border-top: 1px solid #e6e6e6;
+		padding-top: 1.5rem;
+	}
+
+	.section-heading {
+		margin-bottom: 1rem;
+	}
+
+	.section-heading > span {
+		color: #666;
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.pack-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: 1rem;
-		font-size: 0.8rem;
-		color: #888;
+	}
+
+	.pack-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		border: 1px solid #dedede;
+		border-radius: 8px;
+		background: #fff;
+		padding: 1rem;
+		color: inherit;
+		text-decoration: none;
+		transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+	}
+
+	.pack-card:hover {
+		border-color: #1d4ed8;
+		box-shadow: 0 10px 24px rgba(20, 20, 20, 0.08);
+		transform: translateY(-2px);
 	}
 
 	.category {
-		background: #f5f5f5;
-		padding: 0.15rem 0.5rem;
-		border-radius: 4px;
+		flex-shrink: 0;
+		border-radius: 6px;
+		background: #effcf8;
+		color: #0f766e;
+		padding: 0.2rem 0.45rem;
+		font-size: 0.68rem;
+		font-weight: 800;
+		letter-spacing: 0;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.description {
+		flex: 1;
+		margin-bottom: 0;
+		color: #555;
+		font-size: 0.92rem;
+		line-height: 1.5;
+	}
+
+	.meta {
+		color: #777;
+		font-size: 0.85rem;
+	}
+
+	.play {
+		color: #1d4ed8;
+		font-weight: 800;
+		white-space: nowrap;
+	}
+
+	.pack-card:hover .play {
+		color: #0f766e;
+	}
+
+	@media (max-width: 680px) {
+		.container {
+			padding: 1.25rem;
+		}
+
+		.page-header,
+		.section-heading,
+		.pack-header,
+		.meta {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		h1 {
+			font-size: 2rem;
+		}
+
 	}
 </style>
