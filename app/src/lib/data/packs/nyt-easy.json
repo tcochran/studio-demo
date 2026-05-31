@@ -14,7 +14,7 @@
     },
     {
       "id": "ne-2",
-      "prompt": "Largest planet in our solar system:",
+      "prompt": "The largest planet in our solar system:",
       "choices": ["Saturn", "Neptune", "Earth", "Jupiter"],
       "correctIndex": 3,
       "difficulty": 1,
