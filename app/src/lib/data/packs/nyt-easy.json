@@ -22,7 +22,7 @@
     },
     {
       "id": "ne-3",
-      "prompt": "Capital of France:",
+      "prompt": "France's capital city:",
       "choices": ["Lyon", "Marseille", "Paris", "Nice"],
       "correctIndex": 2,
       "difficulty": 1,
