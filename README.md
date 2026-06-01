@@ -35,3 +35,5 @@ That's the whole loop. Try it as your first studio-ai task.
 ## Stack
 
 SvelteKit 2 · Svelte 5 (runes) · TypeScript · Vite · Vitest · adapter-static
+
+<!-- last updated: 2026-06-01 -->
