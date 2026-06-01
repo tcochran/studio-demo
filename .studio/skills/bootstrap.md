@@ -1,9 +1,9 @@
 ---
-name: studio-bootstrap
+name: bootstrap
 description: Prepare the workspace before any code edits, branch creation, or bash commands run. Activate at the very start of a managed-claude run, immediately after `register_agent` and `get_task`. Owns the customer-specific setup that the platform prompt deliberately does not know about — install deps, mount the git config, set environment variables. The platform prompt names this skill explicitly; do not skip it.
 ---
 
-# studio-bootstrap
+# bootstrap
 
 Customer-defined workspace prep for the Quiz Lab repo (`tcochran/studio-demo`). Runs first, before the agent makes any edits or creates branches.
 
