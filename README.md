@@ -1,4 +1,4 @@
-> Today is 2026-06-01.
+> Today is 2026-06-01. Country: USA.
 
 # Quiz Lab
 
