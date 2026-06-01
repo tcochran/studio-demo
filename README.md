@@ -6,6 +6,8 @@ Quiz Lab is a starter template — fork it, point it at your own studio-ai works
 
 New here? Start with the [Onboarding guide](./ONBOARDING.md) for the end-to-end Studio AI walkthrough.
 
+Date: 2026-06-01
+
 ## Getting started
 
 ```bash
