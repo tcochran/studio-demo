@@ -1,3 +1,5 @@
+Re-test v8 2026-06-02.
+
 # Quiz Lab
 
 A product trivia app built to showcase the studio-ai workflow end-to-end: ideas → tasks → branches → PRs → production. Pick a pack, play a round, and watch new packs ship while you play.
