@@ -1,6 +1,6 @@
 ---
 name: bootstrap
-description: Prepare the workspace before any code edits, branch creation, or bash commands run. Activate at the very start of a managed-claude run, immediately after `register_agent` and `get_task`. Owns the customer-specific setup that the platform prompt deliberately does not know about — install deps, mount the git config, set environment variables. The platform prompt names this skill explicitly; do not skip it.
+description: Prepare the workspace before any code edits, branch creation, or bash commands run. Activate at the very start of a managed-claude run, immediately after `register_agent` and `get_task` — this is phase 1 (Bootstrap) of the AI-Native SDLC. Owns the customer-specific setup that the platform prompt deliberately does not know about — install deps, mount the git config, set environment variables.
 ---
 
 # bootstrap
@@ -27,6 +27,6 @@ The app source lives in `app/` — a subdirectory of the repo root. Run `npm` co
 
 ## What this skill does not do
 
-- Does not create the PR branch. The platform prompt handles `git checkout -b`.
-- Does not run tests, build, or deploy. The `studio-precommit` skill owns those before the push.
+- Does not create the PR branch. The platform prompt handles `git checkout -b` in phase 3 (Code).
+- Does not run tests, build, or deploy. The `verify` skill owns those in phase 4.
 - Does not run AWS infrastructure setup. Quiz Lab has no AWS dependencies.
