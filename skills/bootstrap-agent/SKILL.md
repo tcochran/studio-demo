@@ -77,19 +77,20 @@ If there are rebase conflicts, stop and ask the user.
 
 ## Step 5: Install dependencies
 
-Dependencies live under `app/`:
+Dependencies live under `app/`. Quiz Lab uses pnpm (migrated from npm in 2026-06):
 
 ```bash
 cd app
-rm -rf node_modules && npm install
+corepack enable && corepack prepare pnpm@latest --activate  # one-time per worktree
+rm -rf node_modules && pnpm install
 ```
 
 ## Step 6: Verify the app builds and tests pass
 
 ```bash
 cd app
-npm run check
-npm test
+pnpm run check
+pnpm test
 ```
 
 Optionally start the dev server to confirm it boots (don't leave it running in the background):

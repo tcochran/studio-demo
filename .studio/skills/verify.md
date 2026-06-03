@@ -13,7 +13,7 @@ One `bash` tool call. Quiz Lab's build + check + test together run in well under
 
 ```bash
 set -o pipefail; cd /workspace/studio-demo/app && \
-  npm run build && npm run check && npm test -- --run \
+  pnpm run build && pnpm run check && pnpm test -- --run \
   2>&1 | tee /workspace/studio-demo/logs/verify.log | tail -20 ; echo "EXIT=${PIPESTATUS[0]}"
 ```
 

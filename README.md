@@ -10,8 +10,9 @@ New here? Start with the [Onboarding guide](./ONBOARDING.md) for the end-to-end 
 
 ```bash
 cd app
-npm install
-npm run dev
+corepack enable && corepack prepare pnpm@latest --activate
+pnpm install
+pnpm run dev
 ```
 
 Open `http://localhost:5173`.
