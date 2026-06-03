@@ -70,7 +70,7 @@
     },
     {
       "id": "ne-9",
-      "prompt": "Tallest mountain on Earth, measured from sea level:",
+      "prompt": "Tallest mountain on Earth by elevation above sea level:",
       "choices": ["K2", "Mount Everest", "Kangchenjunga", "Denali"],
       "correctIndex": 1,
       "difficulty": 1,
