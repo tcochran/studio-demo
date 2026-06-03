@@ -1,3 +1,5 @@
+> Smoke test #1501 — verifying the cleaner bash tool cards on the execution detail page
+
 # Quiz Lab
 
 A product trivia app built to showcase the studio-ai workflow end-to-end: ideas → tasks → branches → PRs → production. Pick a pack, play a round, and watch new packs ship while you play.
