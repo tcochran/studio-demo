@@ -4,6 +4,9 @@
 # Per-worktree Codex settings may contain local MCP tokens.
 /.codex/
 
+# npm cache (created when npm cache dir is redirected into the worktree)
+.npm/
+
 # OS
 .DS_Store
 Thumbs.db
