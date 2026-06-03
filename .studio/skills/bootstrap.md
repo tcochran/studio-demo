@@ -18,8 +18,10 @@ set -o pipefail
 cd /workspace/studio-demo
 mkdir -p logs
 ln -sf /mnt/session/uploads/git/gitconfig ~/.gitconfig ; echo "EXIT=$?"
-( cd /workspace/studio-demo/app && npm ci ) 2>&1 | tee logs/npm-ci.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
+( cd /workspace/studio-demo/app && corepack enable && corepack prepare pnpm@latest --activate && pnpm install --frozen-lockfile ) 2>&1 | tee logs/pnpm-install.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
 ```
+
+`pnpm install --frozen-lockfile` is the `npm ci` equivalent — fails fast if `pnpm-lock.yaml` is out of sync with `package.json`. Quiz Lab migrated from npm in 2026-06; the lockfile is `pnpm-lock.yaml`, not `package-lock.json`.
 
 ## Repo layout note
 
