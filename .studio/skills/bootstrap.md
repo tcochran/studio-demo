@@ -18,10 +18,24 @@ set -o pipefail
 cd /workspace/studio-demo
 mkdir -p logs
 ln -sf /mnt/session/uploads/git/gitconfig ~/.gitconfig ; echo "EXIT=$?"
-( cd /workspace/studio-demo/app && corepack enable && corepack prepare pnpm@latest --activate && pnpm install --frozen-lockfile ) 2>&1 | tee logs/pnpm-install.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
 ```
 
-`pnpm install --frozen-lockfile` is the `npm ci` equivalent — fails fast if `pnpm-lock.yaml` is out of sync with `package.json`. Quiz Lab migrated from npm in 2026-06; the lockfile is `pnpm-lock.yaml`, not `package-lock.json`.
+```bash
+set -o pipefail
+cd /workspace/studio-demo
+LOCK_HASH=$(sha256sum app/pnpm-lock.yaml | awk '{print $1}' | head -c 16)
+PREWARM_URL="https://github.com/tcochran/studio-demo/releases/download/prewarm-${LOCK_HASH}/prewarm.tar.gz"
+if curl -fsSL "$PREWARM_URL" -o /tmp/prewarm.tar.gz 2>logs/prewarm-curl.log; then
+  ( cd app && tar xzf /tmp/prewarm.tar.gz ) 2>&1 | tee logs/prewarm-extract.log | tail -5
+  echo "PREWARM_HIT lockHash=$LOCK_HASH"
+  echo "EXIT=0"
+else
+  echo "PREWARM_MISS lockHash=$LOCK_HASH — falling back to pnpm install"
+  ( cd app && corepack enable && corepack prepare pnpm@latest --activate && pnpm install --frozen-lockfile ) 2>&1 | tee logs/pnpm-install.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
+fi
+```
+
+Try the **prewarm tarball** first (a release named `prewarm-<lockhash>` on `tcochran/studio-demo`), fall back to `pnpm install --frozen-lockfile` on cache miss. Quiz Lab migrated from npm to pnpm in 2026-06; the lockfile is `pnpm-lock.yaml`, not `package-lock.json`. The release name is keyed by the first 16 hex chars of `sha256(pnpm-lock.yaml)`. Building and publishing the tarball is a manual one-shot today (run `pnpm install` locally, tar, `gh release create`); a CI workflow will own that later.
 
 ## Repo layout note
 
