@@ -1,0 +1,24 @@
+{
+  "id": "music-history",
+  "title": "Music History",
+  "category": "Music",
+  "description": "Test your knowledge of legendary musicians and iconic songs across the decades.",
+  "questions": [
+    {
+      "id": "mh-1",
+      "prompt": "Which British band released 'Strawberry Fields Forever' in 1967?",
+      "choices": ["The Rolling Stones", "The Beatles", "The Who", "Pink Floyd"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The Beatles released 'Strawberry Fields Forever' as a double A-side with 'Penny Lane' in February 1967."
+    },
+    {
+      "id": "mh-2",
+      "prompt": "Donovan's 1966 hit 'Sunshine Superman' was written in response to which artist's work?",
+      "choices": ["Bob Dylan", "The Beatles", "Jimi Hendrix", "The Velvet Underground"],
+      "correctIndex": 0,
+      "difficulty": 4,
+      "explanation": "Donovan wrote 'Sunshine Superman' as a response to Bob Dylan's 'Mr. Tambourine Man,' showcasing his own psychedelic folk style in the mid-60s."
+    }
+  ]
+}
