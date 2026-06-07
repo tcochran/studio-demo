@@ -22,11 +22,11 @@
     },
     {
       "id": "ne-3",
-      "prompt": "Capital of France:",
-      "choices": ["Lyon", "Marseille", "Paris", "Nice"],
-      "correctIndex": 2,
+      "prompt": "The English Civil War was fought between which two groups:",
+      "choices": ["Royalists and Parliamentarians", "Nobles and Commoners", "Catholics and Protestants", "Soldiers and Civilians"],
+      "correctIndex": 0,
       "difficulty": 1,
-      "explanation": "Paris."
+      "explanation": "The conflict (1642–1651) pitted the monarchy against Parliament."
     },
     {
       "id": "ne-4",
