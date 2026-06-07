@@ -1,5 +1,7 @@
 # Agent Notes
 
+*Last updated: 2026-06-07*
+
 This repo uses the studio-ai 5-phase SDLC: **Bootstrap → Plan → Code → Verify → Submit Candidate**. The platform prompt drives Submit Candidate end-to-end (commit, push, PR, submit_for_review). This file fills in the per-tenant *how* for phases 1–4. Read `ARCHITECTURE.md` for system layout and `VISION.md` for product intent before phase 2.
 
 ## Hard constraints
