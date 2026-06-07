@@ -22,11 +22,11 @@
     },
     {
       "id": "ne-3",
-      "prompt": "Capital of France:",
-      "choices": ["Lyon", "Marseille", "Paris", "Nice"],
-      "correctIndex": 2,
+      "prompt": "In what year did the French Revolution begin?",
+      "choices": ["1776", "1789", "1799", "1815"],
+      "correctIndex": 1,
       "difficulty": 1,
-      "explanation": "Paris."
+      "explanation": "The French Revolution began in 1789 with the storming of the Bastille."
     },
     {
       "id": "ne-4",

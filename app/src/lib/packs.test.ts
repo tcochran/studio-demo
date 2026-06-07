@@ -36,6 +36,13 @@ describe('getPack', () => {
 	it('returns null for an unknown pack id', () => {
 		expect(getPack('does-not-exist')).toBeNull();
 	});
+
+	it('nyt-easy pack contains a question about the French Revolution', () => {
+		const pack = getPack('nyt-easy');
+		expect(pack).not.toBeNull();
+		const frenchRevQuestion = pack?.questions.find(q => q.prompt.toLowerCase().includes('french revolution'));
+		expect(frenchRevQuestion).toBeDefined();
+	});
 });
 
 describe('pack schema — guards the rules from .studio/skills/quiz-content-conventions.md', () => {
