@@ -1,0 +1,88 @@
+{
+  "id": "british-music",
+  "title": "British Music Trivia",
+  "category": "Music",
+  "description": "From The Beatles to contemporary acts — test your knowledge of British music history.",
+  "questions": [
+    {
+      "id": "bm-1",
+      "prompt": "Which British band released the album 'OK Computer' in 1997?",
+      "choices": ["Oasis", "Radiohead", "Blur", "Pulp"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Radiohead's 'OK Computer' is considered one of the greatest alternative rock albums ever made."
+    },
+    {
+      "id": "bm-2",
+      "prompt": "What is David Bowie's real first name?",
+      "choices": ["Robert", "David", "Michael", "Paul"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "David Bowie was born David Robert Jones; he changed his surname to avoid confusion with Davy Jones of The Monkees."
+    },
+    {
+      "id": "bm-3",
+      "prompt": "Which British progressive rock band released 'The Dark Side of the Moon'?",
+      "choices": ["Genesis", "Yes", "Pink Floyd", "Emerson Lake & Palmer"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Pink Floyd's 1973 album 'The Dark Side of the Moon' is one of the best-selling albums of all time."
+    },
+    {
+      "id": "bm-4",
+      "prompt": "Morrissey was the lead singer of which British band?",
+      "choices": ["The Cure", "Depeche Mode", "The Smiths", "Joy Division"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "The Smiths, formed with guitarist Johnny Marr, were hugely influential in 1980s indie rock."
+    },
+    {
+      "id": "bm-5",
+      "prompt": "Which British synthpop duo had a hit with 'Sweet Dreams (Are Made of This)'?",
+      "choices": ["Pet Shop Boys", "Eurythmics", "Duran Duran", "Human League"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Eurythmics, fronted by Annie Lennox and Dave Stewart, released the anthem in 1983."
+    },
+    {
+      "id": "bm-6",
+      "prompt": "The Rolling Stones formed in which British city?",
+      "choices": ["Manchester", "London", "Liverpool", "Birmingham"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The Rolling Stones formed in London and became one of rock's most enduring acts."
+    },
+    {
+      "id": "bm-7",
+      "prompt": "Kate Bush released her debut album 'The Kick Inside' in which year?",
+      "choices": ["1975", "1976", "1977", "1978"],
+      "correctIndex": 2,
+      "difficulty": 3,
+      "explanation": "Kate Bush's 1978 debut 'The Kick Inside' showcased her unique voice and avant-garde production."
+    },
+    {
+      "id": "bm-8",
+      "prompt": "Which British band released 'Rumours', one of the best-selling albums ever?",
+      "choices": ["Led Zeppelin", "Fleetwood Mac", "The Who", "Queen"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Fleetwood Mac's 1977 album 'Rumours' has sold over 40 million copies worldwide."
+    },
+    {
+      "id": "bm-9",
+      "prompt": "Siouxsie Sioux was the lead of which post-punk band?",
+      "choices": ["The Damned", "Siouxsie and the Banshees", "Bauhaus", "Gang of Four"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Siouxsie and the Banshees were a pioneering post-punk and gothic rock band from London."
+    },
+    {
+      "id": "bm-10",
+      "prompt": "Which British electronic musician created the alias 'Daft Punk' (actually French, but influential in British dance)... wait, Burial created haunting dubstep from England. What is Burial's real name?",
+      "choices": ["Will Bevan", "Luke Vibert", "Richie Hawtin", "Plastikman"],
+      "correctIndex": 0,
+      "difficulty": 4,
+      "explanation": "Burial (Will Bevan) is a mysterious British electronic musician known for ghostly, atmospheric dubstep."
+    }
+  ]
+}
