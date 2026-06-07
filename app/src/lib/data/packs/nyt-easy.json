@@ -83,6 +83,14 @@
       "correctIndex": 2,
       "difficulty": 1,
       "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+    },
+    {
+      "id": "ne-11",
+      "prompt": "British post-punk band fronted by Siouxsie Sioux:",
+      "choices": ["Bauhaus", "Siouxsie and the Banshees", "The Cure", "Depeche Mode"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Siouxsie and the Banshees formed in 1976 and were influential pioneers of post-punk."
     }
   ]
 }
