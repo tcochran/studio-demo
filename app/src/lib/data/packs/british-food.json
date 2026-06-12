@@ -1,0 +1,16 @@
+{
+  "id": "british-food",
+  "title": "British Food & Culture",
+  "category": "British culture",
+  "description": "Questions covering British food traditions and cultural heritage.",
+  "questions": [
+    {
+      "id": "bf-1",
+      "prompt": "Region of Wales historically dominant in slate mining:",
+      "choices": ["Pembrokeshire", "Gwynedd", "Ceredigion", "Carmarthenshire"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Gwynedd in north Wales hosted the world's largest slate quarries, including Dinorwig and Penrhyn."
+    }
+  ]
+}

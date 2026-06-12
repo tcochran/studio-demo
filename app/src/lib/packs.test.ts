@@ -36,6 +36,13 @@ describe('getPack', () => {
 	it('returns null for an unknown pack id', () => {
 		expect(getPack('does-not-exist')).toBeNull();
 	});
+
+	it('british-food pack exists and contains a Welsh slate mining question', () => {
+		const pack = getPack('british-food');
+		expect(pack).not.toBeNull();
+		const slateQ = pack!.questions.find((q) => q.prompt.toLowerCase().includes('slate'));
+		expect(slateQ).toBeDefined();
+	});
 });
 
 describe('pack schema — guards the rules from .studio/skills/quiz-content-conventions.md', () => {
