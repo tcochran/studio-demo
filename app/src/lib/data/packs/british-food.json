@@ -1,0 +1,16 @@
+{
+  "id": "british-food",
+  "title": "British Culture & Food",
+  "category": "Culture",
+  "description": "From teatime traditions to beloved cultural institutions — how well do you know British life?",
+  "questions": [
+    {
+      "id": "bf-1",
+      "prompt": "Welsh male voice choirs traditionally arose from communities tied to which industry:",
+      "choices": ["Coal mining", "Fishing", "Sheep farming", "Steel production"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Welsh male voice choirs grew from the chapels and colliery communities of South Wales in the 19th century."
+    }
+  ]
+}
