@@ -58,6 +58,16 @@ export function listPacks(): Pack[] {
 		.sort((a: Pack, b: Pack) => a.title.localeCompare(b.title));
 }
 
+export function getPacksByDifficulty(min: number): Pack[] {
+	return listPacks().filter((pack) => {
+		const difficulties = pack.questions
+			.map((q) => q.difficulty)
+			.filter((d): d is NonNullable<typeof d> => d != null);
+		if (difficulties.length === 0) return false;
+		return Math.min(...difficulties) >= min;
+	});
+}
+
 export function getPack(id: string): Pack | null {
 	const file = resolve(PACKS_DIR, `${id}.json`);
 	try {
