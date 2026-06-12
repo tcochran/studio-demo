@@ -1,0 +1,16 @@
+{
+  "id": "british-food",
+  "title": "British Trivia",
+  "category": "Culture",
+  "description": "Facts about British history, landmarks, and culture.",
+  "questions": [
+    {
+      "id": "bf-1",
+      "prompt": "The Ffestiniog Railway in Wales runs from Porthmadog to:",
+      "choices": ["Caernarfon", "Blaenau Ffestiniog", "Bangor", "Aberystwyth"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "The Ffestiniog Railway runs 13.5 miles from Porthmadog on the coast to Blaenau Ffestiniog in the mountains."
+    }
+  ]
+}
