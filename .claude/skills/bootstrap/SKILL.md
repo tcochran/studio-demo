@@ -18,12 +18,16 @@ set -o pipefail
 cd /workspace/studio-demo
 mkdir -p logs
 ln -sf /mnt/session/uploads/git/gitconfig ~/.gitconfig ; echo "EXIT=$?"
-( cd /workspace/studio-demo/app && npm ci ) 2>&1 | tee logs/npm-ci.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
+( cd /workspace/studio-demo/app && pnpm install --frozen-lockfile ) 2>&1 | tee logs/pnpm-install.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
 ```
 
 ## Repo layout note
 
-The app source lives in `app/` — a subdirectory of the repo root. Run `npm` commands from `/workspace/studio-demo/app`. Run `git` commands from `/workspace/studio-demo` (the repo root).
+The app source lives in `app/` — a subdirectory of the repo root. Run `pnpm` commands from `/workspace/studio-demo/app`. Run `git` commands from `/workspace/studio-demo` (the repo root).
+
+## Package manager
+
+This repo uses **pnpm**, not npm. The lockfile is `pnpm-lock.yaml`. Do not run `npm ci` or `npm install` — they generate a stray `package-lock.json` and the install ignores the actual lockfile.
 
 ## What this skill does not do
 
