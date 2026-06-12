@@ -1,0 +1,16 @@
+{
+  "id": "british-food",
+  "title": "British Food & Culture",
+  "category": "Culture",
+  "description": "Test your knowledge of British food, traditions, and culture.",
+  "questions": [
+    {
+      "id": "bf-1",
+      "prompt": "Wales's national rugby union team plays home games at:",
+      "choices": ["Cardiff Arms Park", "Principality Stadium", "Parc y Scarlets", "Rodney Parade"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The Principality Stadium in Cardiff, opened in 1999, is the national stadium of Wales and home to Welsh rugby."
+    }
+  ]
+}
