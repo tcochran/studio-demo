@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'fs';
 import { resolve } from 'path';
-import { listPacks, getPack, type Pack, type MultipleChoiceQuestion } from './packs';
+import { listPacks, getPack, getPackById, type Pack, type MultipleChoiceQuestion } from './packs';
 
 const PACKS_DIR = resolve('src/lib/data/packs');
 
@@ -35,6 +35,18 @@ describe('getPack', () => {
 
 	it('returns null for an unknown pack id', () => {
 		expect(getPack('does-not-exist')).toBeNull();
+	});
+});
+
+describe('getPackById', () => {
+	it('returns the pack matching the given id', () => {
+		const pack = getPackById('nyt-easy');
+		expect(pack).not.toBeNull();
+		expect(pack?.id).toBe('nyt-easy');
+	});
+
+	it('returns null for an unknown id', () => {
+		expect(getPackById('does-not-exist')).toBeNull();
 	});
 });
 
