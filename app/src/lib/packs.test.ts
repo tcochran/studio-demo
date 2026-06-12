@@ -38,6 +38,15 @@ describe('getPack', () => {
 	});
 });
 
+describe('british-food pack — Ffestiniog Railway question', () => {
+	it('pack exists and contains a Ffestiniog Railway question', () => {
+		const pack = getPack('british-food');
+		expect(pack).not.toBeNull();
+		const q = pack!.questions.find((q) => q.prompt.toLowerCase().includes('ffestiniog'));
+		expect(q, 'expected a question mentioning Ffestiniog Railway').toBeDefined();
+	});
+});
+
 describe('pack schema — guards the rules from .studio/skills/quiz-content-conventions.md', () => {
 	const packs = loadAllPacks();
 
