@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'fs';
 import { resolve } from 'path';
-import { listPacks, getPack, type Pack, type MultipleChoiceQuestion } from './packs';
+import { listPacks, getPack, getPacksByDifficulty, type Pack, type MultipleChoiceQuestion } from './packs';
 
 const PACKS_DIR = resolve('src/lib/data/packs');
 
@@ -35,6 +35,34 @@ describe('getPack', () => {
 
 	it('returns null for an unknown pack id', () => {
 		expect(getPack('does-not-exist')).toBeNull();
+	});
+});
+
+describe('getPacksByDifficulty', () => {
+	it('returns all packs when min=1 (every pack has at least one difficulty-1 question)', () => {
+		const all = listPacks();
+		const result = getPacksByDifficulty(1);
+		// All loaded packs have at least one question with difficulty 1, so all qualify.
+		expect(result.length).toBe(all.length);
+	});
+
+	it('returns an empty array when min is higher than any pack lowest difficulty', () => {
+		// Both current packs have questions with difficulty 1, so their lowest is 1 < 2.
+		const result = getPacksByDifficulty(2);
+		expect(result).toEqual([]);
+	});
+
+	it('returned packs have no question with difficulty < min', () => {
+		// For min=1, every question in every returned pack must have difficulty >= 1.
+		const result = getPacksByDifficulty(1);
+		for (const pack of result) {
+			const difficulties = pack.questions
+				.map((q) => q.difficulty)
+				.filter((d): d is NonNullable<typeof d> => d != null);
+			for (const d of difficulties) {
+				expect(d).toBeGreaterThanOrEqual(1);
+			}
+		}
 	});
 });
 
