@@ -12,9 +12,9 @@ Quiz Lab's verification step. Runs from `app/` (the SvelteKit project root).
 Run each as its **own** `bash` tool call so a failure is diagnosable from its own log:
 
 ```bash
-( cd /workspace/studio-demo/app && npm run build ) 2>&1 | tee /workspace/studio-demo/logs/build.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
-( cd /workspace/studio-demo/app && npm run check ) 2>&1 | tee /workspace/studio-demo/logs/check.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
-( cd /workspace/studio-demo/app && npm test -- --run ) 2>&1 | tee /workspace/studio-demo/logs/test.log | tail -10 ; echo "EXIT=${PIPESTATUS[0]}"
+( cd /workspace/studio-demo/app && pnpm run build ) 2>&1 | tee /workspace/studio-demo/logs/build.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
+( cd /workspace/studio-demo/app && pnpm run check ) 2>&1 | tee /workspace/studio-demo/logs/check.log | tail -5 ; echo "EXIT=${PIPESTATUS[0]}"
+( cd /workspace/studio-demo/app && pnpm test -- --run ) 2>&1 | tee /workspace/studio-demo/logs/test.log | tail -10 ; echo "EXIT=${PIPESTATUS[0]}"
 ```
 
 After each step, if `EXIT=N` prints with N≠0, **STOP IMMEDIATELY**: `tail -50 /workspace/studio-demo/logs/<that-step>.log` to gather context, post a single `create_comment` on the task describing the failure with the tail attached, then end your turn. Do NOT proceed to phase 5. Do NOT call `submit_for_review`.
