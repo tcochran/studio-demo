@@ -66,3 +66,7 @@ export function getPack(id: string): Pack | null {
 		return null;
 	}
 }
+
+export function getPackById(id: string): Pack | null {
+	return listPacks().find((p) => p.id === id) ?? null;
+}
