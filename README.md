@@ -1,3 +1,4 @@
+<!-- managed-claude PR #897 test 2026-06-12 sonnet -->
 Re-test v3 skill-path migration: 2026-06-04 swordfish
 
 # Quiz Lab
