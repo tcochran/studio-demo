@@ -1,39 +1,48 @@
 ---
 name: plan
-description: Plan the change before writing code. Activate during phase 2 (Plan) of the AI-Native SDLC, after Bootstrap finishes and before any file edits. Owns the per-tenant planning conventions for the Quiz Lab repo — what to read first, how to scope the change, what shape the implementation takes.
+description: Plan the change. Activate at the start of phase 2 (Plan), after Bootstrap. Owns the single load-bearing decision of the run — is this a code change (test-first required) or a configuration change (no test required)? The Code phase that follows depends on this judgment, so always consult this skill; your conclusion shapes the rest of the run.
 ---
 
 # plan
 
-Quiz Lab's planning step. The output isn't a written plan document — it's the mental model you carry into Code (phase 3).
+Quiz Lab's planning step. Make exactly one decision before picking up the keyboard: **is this a code change or a configuration change?** Get this wrong and either you waste tool calls writing a test for a comment fix, or you ship a feature without one.
 
-## What to read before planning
+## Definitions
 
-In order, lightest to heaviest:
+**Code change** — the change introduces or modifies behavior a user or downstream system can observe. The existing test suite would have passed before the change and your new test would have failed before the change. Examples:
 
-1. The task spec (already inlined in the system prompt).
-2. The README and ARCHITECTURE.md at the repo root — they describe the project shape and decisions made.
-3. The file(s) the spec implies you'll touch — read the file *and* the test file next to it (when one exists). Tests encode constraints you can satisfy on the first attempt.
-4. The `quiz-content-conventions` skill if the change touches quiz packs or questions.
+- New quiz question (the pack-validation test exercises the new entry)
+- New API route, endpoint, or validation rule
+- Logic in `app/src/lib/packs.ts` or anywhere under `app/src/`
+- Bug fix where the bug is reproducible in a test
 
-Don't read speculatively. If the spec says "add a question to british-music.json", you don't need to read all the other pack files first.
+**Configuration / doc / data-only change** — the change doesn't introduce new user-visible behavior. Examples:
 
-## Scope discipline
+- README, CLAUDE.md, AGENTS.md, ARCHITECTURE.md edits
+- Comments only
+- `package.json` metadata (not dependency edits)
+- `.env.example`, `.gitignore`, `tsconfig.json` tweaks
+- Data asset that lives entirely in static content and isn't asserted on shape
 
-- One concrete change per task. If the spec implies multiple changes, stop and post a `create_comment` asking which to do first.
-- No drive-by refactors. If you see something untidy adjacent to your edit, leave it.
-- Minimal changes win. A one-line edit that satisfies the spec beats a multi-file restructure that's "better" but unscoped.
+## Required workflow
 
-## Shape of the change
+### Code change → test-first
 
-Decide before writing code:
+1. Identify the test file adjacent to what you'll edit (e.g. `packs.test.ts` for changes under `data/packs/`).
+2. Decide the assertion: it must be one the existing suite *couldn't* have caught before your change.
+3. The code skill (phase 3) writes the failing test first, runs it, confirms it fails for the right reason, then makes the minimum edit to turn it green.
 
-- Which file(s) you'll edit.
-- Whether you'll add a test (default yes; phase 3 owns the test).
-- The smallest edit that satisfies the spec's user-visible outcome.
+### Config / doc / data change → no test
+
+No test. Phase 4 (Verify) still runs the existing suite to catch any regression. Don't pad the change with a placeholder test "to be safe" — placeholder tests grow stale and noisy.
+
+## When unsure
+
+Default to **code change**. The cost of writing a test for a trivial change is one extra tool call; the cost of skipping a test for a real change is a defect in production.
 
 ## What this skill does not do
 
-- Does not write the code. That's phase 3.
-- Does not write a planning document or post a plan comment unless explicitly asked.
-- Does not run tests. That's phase 4.
+- Does not write the test or the code. That's phase 3 (Code).
+- Does not run tests. That's phase 4 (Verify).
+- Does not commit. That's phase 5 (Submit).
+- Does not consult `quiz-content-conventions` — that skill is auto-activated by the agent when relevant content is involved.
