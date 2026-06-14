@@ -1,51 +1,65 @@
 # Agent Notes
 
-This repo uses the studio-ai 5-phase SDLC: **Bootstrap → Plan → Code → Verify → Submit Candidate**. The platform prompt drives Submit Candidate end-to-end (commit, push, PR, submit_for_review). This file fills in the per-tenant *how* for phases 1–4. Read `ARCHITECTURE.md` for system layout and `VISION.md` for product intent before phase 2.
+The studio-ai platform prompt drives the 5-phase SDLC (Bootstrap → Plan → Code → Verify → Submit Candidate). This file is the single source of truth for *how* Quiz Lab does each phase. There are no phase skills — everything you need is here.
 
 ## Hard constraints
 
-- **Static site.** `adapter-static` + `prerender = true` everywhere. No runtime server, no `+server.ts` endpoints, no server actions that depend on a live process. If a task needs dynamic behavior, surface it as a question — don't quietly add a backend.
-- **All app commands run from `app/`.** The repo root has no `package.json`.
+- **Static site.** `adapter-static` + `prerender = true` everywhere. No runtime server, no `+server.ts`, no server actions that depend on a live process. If a task needs dynamic behavior, surface it as a question — don't quietly add a backend.
+- **Repo layout.** App source is in `app/`. Run `pnpm` from `/workspace/studio-demo/app`. Run `git` from `/workspace/studio-demo`.
+- **pnpm**, not npm. Lockfile is `pnpm-lock.yaml`. Never run `npm ci` / `npm install` — they generate a stray `package-lock.json` and ignore the lockfile.
 - **Node 22** (matches CI).
-- **Do not deploy from the agent session.** `.github/workflows/preview.yml` posts a preview URL on the PR; `deploy.yml` ships `main` to GitHub Pages on merge. Both are automatic.
+- **Do not deploy from the agent session.** `preview.yml` posts a preview URL on the PR; `deploy.yml` ships `main` to GitHub Pages on merge. Both automatic.
 
-## 1. Bootstrap
+## Phase 1 — Bootstrap
 
-From the repo root:
+Run as one chained call:
 
-    cd app && npm ci
+```bash
+set -o pipefail
+cd /workspace/studio-demo
+mkdir -p logs
+ln -sf /mnt/session/uploads/git/gitconfig ~/.gitconfig
+( cd app && pnpm install --frozen-lockfile ) 2>&1 | tee logs/pnpm-install.log | tail -5
+echo "EXIT=${PIPESTATUS[0]}"
+```
 
-No env vars or secrets needed for local dev.
+On `EXIT≠0`: `tail -50 logs/pnpm-install.log`, post a `create_comment` with the tail, end the turn. Do not proceed.
 
-## 2. Plan
+## Phase 2 — Plan
 
-- Read `ARCHITECTURE.md` for project structure, data model, and the decisions table.
-- Pack shape lives in `app/src/lib/packs.ts`; pack data in `app/src/lib/data/packs/*.json`.
-- Read tests adjacent to files you'll edit (when they exist) — they encode constraints.
+Make exactly one decision before editing: **code change or config / doc / data change?**
 
-## 3. Code
+- **Code change** — introduces user-visible behavior (new logic in `app/src/`, new route, bug fix with a reproducer). Test-first required.
+- **Config / doc / data change** — README, AGENTS.md, comments, `package.json` metadata, `tsconfig.json`, static content not asserted on shape. No test required.
+
+When unsure, default to code change.
+
+Read `ARCHITECTURE.md` for project structure and the decisions table. Pack shape lives in `app/src/lib/packs.ts`; pack data in `app/src/lib/data/packs/*.json`. Read tests adjacent to files you'll edit — they encode constraints.
+
+If editing quiz pack content, follow the `quiz-content-conventions` skill.
+
+## Phase 3 — Code
 
 - TypeScript + Svelte 5 runes mode. Prefer `$state` / `$derived` over legacy reactive syntax.
-- Keep edits scoped to the task; no drive-by refactors.
+- Modify originals; never create `file_v2.json` / `file_new.ts` variants.
+- One file at a time, smallest viable edit. Don't refactor adjacent code. Don't add comments explaining the change.
+- Code change (per Phase 2): write the failing test, run it, confirm it fails for the right reason, then make the minimum edit to turn it green.
 
-## 4. Verify
+## Phase 4 — Verify
 
-From `app/`, in order:
+Run as **one chained call** with fail-fast — the chain stops at the first non-zero exit, giving the same coverage as three separate calls in one tool round-trip:
 
-1. `npm run check` — svelte-check + typecheck. **Must pass.**
-2. `npm run build` — confirms the static adapter produces a valid build. **Must pass.**
-3. `npm test` — vitest. The suite is empty today; if your change introduces non-trivial logic, add a vitest spec next to the code and make it pass.
+```bash
+( cd /workspace/studio-demo/app && pnpm run check && pnpm run build && pnpm test -- --run ) 2>&1 | tee /workspace/studio-demo/logs/verify.log | tail -30
+echo "EXIT=${PIPESTATUS[0]}"
+```
 
-Skip the dev server for verification — `npm run build` is the ground truth for a static site. If a task does need a running server, follow Dev Server Hygiene below.
+Do NOT split this into separate tool calls.
 
-## Dev Server Hygiene
+On `EXIT≠0`: `tail -100 /workspace/studio-demo/logs/verify.log` to see which step failed, post a `create_comment` with the failure context, end the turn. Do NOT proceed to Phase 5. Do NOT call `submit_for_review`.
 
-Keep at most one local dev server running for this worktree.
+`pnpm run build` is the ground truth for a static site. Skip the dev server for verification.
 
-- Before starting a dev server, check for existing listeners on the expected Vite ports:
-  `lsof -nP -iTCP:5173 -sTCP:LISTEN`, `lsof -nP -iTCP:5174 -sTCP:LISTEN`, and
-  `lsof -nP -iTCP:5175 -sTCP:LISTEN`.
-- If a dev server is already running, reuse that URL instead of starting another one.
-- If a fresh server is needed, stop the existing dev server first, then start the new one.
-- Do not leave extra dev servers running after verification. Stop any server you started unless the user
-  explicitly asks to keep it running.
+## Phase 5 — Submit Candidate
+
+Handled by the platform prompt. Verification (Phase 4) has already run — do not re-run tests here.
