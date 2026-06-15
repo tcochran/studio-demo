@@ -1,3 +1,4 @@
+<!-- 1798 finalize_task probe -->
 Re-test v3 skill-path migration: 2026-06-04 swordfish
 
 # Quiz Lab
