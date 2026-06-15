@@ -1,6 +1,6 @@
 # Agent Notes
 
-The studio-ai platform prompt drives the 5-phase SDLC (Bootstrap → Plan → Code → Verify → Submit Candidate). This file is the single source of truth for *how* Quiz Lab does each phase. There are no phase skills — everything you need is here.
+Per-tenant guidance for Quiz Lab. The platform prompt drives the 5-phase SDLC; this file fills in the *how* for phases 1–4. There are no phase skills — everything tenant-specific is here.
 
 ## Hard constraints
 
@@ -11,8 +11,6 @@ The studio-ai platform prompt drives the 5-phase SDLC (Bootstrap → Plan → Co
 - **Do not deploy from the agent session.** `preview.yml` posts a preview URL on the PR; `deploy.yml` ships `main` to GitHub Pages on merge. Both automatic.
 
 ## Phase 1 — Bootstrap
-
-Run as one chained call:
 
 ```bash
 set -o pipefail
@@ -43,23 +41,14 @@ If editing quiz pack content, follow the `quiz-content-conventions` skill.
 - TypeScript + Svelte 5 runes mode. Prefer `$state` / `$derived` over legacy reactive syntax.
 - Modify originals; never create `file_v2.json` / `file_new.ts` variants.
 - One file at a time, smallest viable edit. Don't refactor adjacent code. Don't add comments explaining the change.
-- Code change (per Phase 2): write the failing test, run it, confirm it fails for the right reason, then make the minimum edit to turn it green.
 
 ## Phase 4 — Verify
-
-Run as **one chained call** with fail-fast — the chain stops at the first non-zero exit, giving the same coverage as three separate calls in one tool round-trip:
 
 ```bash
 ( cd /workspace/studio-demo/app && pnpm run check && pnpm run build && pnpm test -- --run ) 2>&1 | tee /workspace/studio-demo/logs/verify.log | tail -30
 echo "EXIT=${PIPESTATUS[0]}"
 ```
 
-Do NOT split this into separate tool calls.
-
-On `EXIT≠0`: `tail -100 /workspace/studio-demo/logs/verify.log` to see which step failed, post a `create_comment` with the failure context, end the turn. Do NOT proceed to Phase 5. Do NOT call `submit_for_review`.
+On `EXIT≠0`: `tail -100 /workspace/studio-demo/logs/verify.log` to see which step failed, post a `create_comment` with the failure context, end the turn. Do not proceed.
 
 `pnpm run build` is the ground truth for a static site. Skip the dev server for verification.
-
-## Phase 5 — Submit Candidate
-
-Handled by the platform prompt. Verification (Phase 4) has already run — do not re-run tests here.
