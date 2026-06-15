@@ -21,7 +21,9 @@
 # + system node.
 
 set -e
-exec > /var/log/warmup-quiz-lab.log 2>&1
+# Stdout/stderr is captured by the caller (SSM Run Command). No file
+# redirect needed — and `/var/log/` would fail anyway since this script
+# runs as ec2-user, not root.
 echo "[warmup] start $(date -u)"
 
 # Enable pnpm via corepack (built into node 24, no extra install needed).
