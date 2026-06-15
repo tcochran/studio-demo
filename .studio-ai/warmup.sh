@@ -26,9 +26,9 @@ set -e
 # runs as ec2-user, not root.
 echo "[warmup] start $(date -u)"
 
-# Enable pnpm via corepack (built into node 24, no extra install needed).
-# `corepack enable pnpm` is idempotent.
-corepack enable pnpm
+# `pnpm` is already on PATH — the worker host's VM setup runs `corepack
+# enable` as root so package managers (pnpm, yarn) are globally available
+# without tenants needing root.
 
 # Workspace layout: this repo lives at /workspace/<tenant-slug>; the actual
 # SvelteKit app is under `app/`. Match the studio-demo lockfile shape.
