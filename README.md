@@ -26,6 +26,7 @@ Open `http://localhost:5173`.
 - A play screen (`/play/[pack]`) with one-question-at-a-time scoring
 - `.mcp.json` pre-wired for the studio-ai MCP server so an agent can pick up tasks against this repo, but will need token (get from Admin) - this should be added to your .gitignore file once token is entered
 - GitHub Pages deploy + PR-preview workflows in `.github/workflows/`
+- webhook-test-2026-06-15
 
 ## Adding a new pack
 
