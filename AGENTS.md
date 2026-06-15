@@ -12,11 +12,9 @@ Per-tenant guidance for Quiz Lab. The platform prompt drives the 5-phase SDLC; t
 
 ## Phase 1 — Bootstrap
 
+Platform owns `mkdir -p logs` + git identity. Tenant deps:
+
 ```bash
-set -o pipefail
-cd /workspace/studio-demo
-mkdir -p logs
-ln -sf /mnt/session/uploads/git/gitconfig ~/.gitconfig
 ( cd app && pnpm install --frozen-lockfile ) 2>&1 | tee logs/pnpm-install.log | tail -5
 echo "EXIT=${PIPESTATUS[0]}"
 ```
