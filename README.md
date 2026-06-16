@@ -1,4 +1,4 @@
-Re-test v3 skill-path migration: 2026-06-04 swordfish
+Re-test v3 skill-path migration: 2026-06-04 swordfish — Updated 2026-06-16
 
 # Quiz Lab
 
