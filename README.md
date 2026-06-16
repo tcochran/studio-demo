@@ -1,3 +1,4 @@
+<!-- 1799 bench cloud-vs-worker seabass-2026-06-16 -->
 <!-- 1799 selfHostedSonnet v7 boot-skip seabass-2026-06-16 -->
 <!-- 1799 selfHostedSonnet v6 seabass-2026-06-16 -->
 <!-- 1799 self-hosted v5 clean seabass-2026-06-16 -->
