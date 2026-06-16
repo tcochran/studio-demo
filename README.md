@@ -1,3 +1,7 @@
+<!-- 1799 selfHostedSonnet v7 boot-skip seabass-2026-06-16 -->
+<!-- 1799 selfHostedSonnet v6 seabass-2026-06-16 -->
+<!-- 1799 self-hosted v5 clean seabass-2026-06-16 -->
+<!-- 1799 self-hosted v4 seabass-2026-06-16 -->
 Re-test v3 skill-path migration: 2026-06-04 swordfish
 
 # Quiz Lab
