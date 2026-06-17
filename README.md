@@ -1,3 +1,4 @@
+<!-- bench ssm-auth seabass-2026-06-17 -->
 Re-test v3 skill-path migration: 2026-06-04 swordfish
 
 # Quiz Lab
@@ -38,3 +39,5 @@ That's the whole loop. Try it as your first studio-ai task.
 ## Stack
 
 SvelteKit 2 · Svelte 5 (runes) · TypeScript · Vite · Vitest · adapter-static
+
+<!-- probe: selfHostedSonnet git auth 1781683109 -->
