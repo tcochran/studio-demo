@@ -1,3 +1,4 @@
+<!-- self-hosted-git-auth-test-v4 -->
 <!-- self-hosted-git-auth-test-v3 -->
 <!-- bench ssm-auth seabass-2026-06-17 -->
 Re-test v3 skill-path migration: 2026-06-04 swordfish
