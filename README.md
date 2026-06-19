@@ -1,3 +1,4 @@
+Self-hosted worker test 2
 Self-hosted worker test
 <!-- self-hosted-git-auth-test-v4 -->
 <!-- self-hosted-git-auth-test-v3 -->
