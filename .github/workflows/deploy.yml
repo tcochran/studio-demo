@@ -49,7 +49,31 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # studio.ai "shipped" signal: GitHub Pages only ever emits a `github-pages`
+  # deployment, but studio.ai keys task done→shipped off a production
+  # deployment_status. Record a `production` deployment for the deployed commit
+  # so the studio.ai webhook (idea #185, M1) can match deployment.sha → task.
+  mark-production:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      deployments: write
+    steps:
+      - name: Record production deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+          PAGES_URL: ${{ needs.deploy.outputs.page_url }}
+        run: |
+          ID=$(printf '{"ref":"%s","environment":"production","auto_merge":false,"required_contexts":[]}' "$SHA" \
+            | gh api "repos/$REPO/deployments" --method POST --input - --jq '.id')
+          gh api "repos/$REPO/deployments/$ID/statuses" --method POST \
+            -f state=success -f environment=production -f environment_url="$PAGES_URL"
