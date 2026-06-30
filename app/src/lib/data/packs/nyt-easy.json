@@ -83,6 +83,14 @@
       "correctIndex": 2,
       "difficulty": 1,
       "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+    },
+    {
+      "id": "ne-11",
+      "prompt": "What color is a clear daytime sky?",
+      "choices": ["Gray", "White", "Blue", "Red"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Sunlight scatters in Earth's atmosphere; blue light scatters more than other colors, giving the sky its blue appearance."
     }
   ]
 }
