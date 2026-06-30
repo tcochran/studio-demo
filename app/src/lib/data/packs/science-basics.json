@@ -1,0 +1,56 @@
+{
+  "id": "science-basics",
+  "title": "Science Basics",
+  "category": "Science",
+  "description": "Test your knowledge of elementary science — planets, states of matter, photosynthesis, and more.",
+  "questions": [
+    {
+      "id": "sb-1",
+      "prompt": "Which planet is closest to the Sun?",
+      "choices": ["Mercury", "Venus", "Earth", "Mars"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "Mercury is the smallest planet and the closest to the Sun, orbiting at an average distance of about 58 million km."
+    },
+    {
+      "id": "sb-2",
+      "prompt": "What are the three fundamental states of matter?",
+      "choices": ["Solid, liquid, gas", "Solid, liquid, plasma", "Gas, liquid, plasma", "Solid, gas, plasma"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "The three common states of matter on Earth are solid, liquid, and gas. Plasma is the fourth state, but is less common in everyday experience."
+    },
+    {
+      "id": "sb-3",
+      "prompt": "Which gas do plants absorb from the air during photosynthesis?",
+      "choices": ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Plants absorb carbon dioxide and water, and with sunlight they produce glucose and oxygen. The oxygen is released into the air."
+    },
+    {
+      "id": "sb-4",
+      "prompt": "Approximately how fast does light travel in a vacuum?",
+      "choices": ["300,000 km/s", "150,000 km/s", "500,000 km/s", "100,000 km/s"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Light travels at about 299,792 km/s (roughly 300,000 km/s) in a vacuum. That's fast enough to circle the Earth 7.5 times in one second."
+    },
+    {
+      "id": "sb-5",
+      "prompt": "What is the chemical symbol for water?",
+      "choices": ["H2O", "CO2", "NaCl", "O2"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "H2O means two hydrogen atoms bonded to one oxygen atom — the familiar formula for water."
+    },
+    {
+      "id": "sb-6",
+      "prompt": "Which planet is known as the Red Planet?",
+      "choices": ["Venus", "Jupiter", "Mars", "Saturn"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Mars gets its reddish appearance from iron oxide (rust) on its surface."
+    }
+  ]
+}

@@ -33,7 +33,7 @@
 					</div>
 					<p class="description">{pack.description}</p>
 					<div class="meta">
-						<span>{pack.questions.length} questions</span>
+						<span class="q-badge">{pack.questions.length} questions</span>
 						<span class="play">Play -></span>
 					</div>
 				</a>
@@ -174,6 +174,16 @@
 	.meta {
 		color: #777;
 		font-size: 0.85rem;
+	}
+
+	.q-badge {
+		border-radius: 6px;
+		background: #f0f4ff;
+		color: #1d4ed8;
+		padding: 0.2rem 0.45rem;
+		font-size: 0.68rem;
+		font-weight: 800;
+		white-space: nowrap;
 	}
 
 	.play {
