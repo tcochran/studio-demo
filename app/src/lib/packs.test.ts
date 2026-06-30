@@ -36,6 +36,15 @@ describe('getPack', () => {
 	it('returns null for an unknown pack id', () => {
 		expect(getPack('does-not-exist')).toBeNull();
 	});
+
+	it('loaded pack has valid questions', () => {
+		const pack = getPack('nyt-easy');
+		expect(pack?.questions).toBeDefined();
+		for (const q of pack?.questions || []) {
+			expect(q.id).toBeDefined();
+			expect(q.prompt).toBeDefined();
+		}
+	});
 });
 
 describe('pack schema — guards the rules from .studio/skills/quiz-content-conventions.md', () => {
