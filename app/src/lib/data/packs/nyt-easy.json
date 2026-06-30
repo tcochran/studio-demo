@@ -83,6 +83,14 @@
       "correctIndex": 2,
       "difficulty": 1,
       "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+    },
+    {
+      "id": "ne-11",
+      "prompt": "Color of a clear daytime sky:",
+      "choices": ["Blue", "Red", "Green", "Yellow"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "Blue. The sky appears blue due to Rayleigh scattering of sunlight by the atmosphere."
     }
   ]
 }
