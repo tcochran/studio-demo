@@ -123,6 +123,14 @@
       "correctIndex": 1,
       "difficulty": 3,
       "explanation": "Petr Čech finished his career with 202 PL clean sheets, a league record."
+    },
+    {
+      "id": "pl-16",
+      "prompt": "What is the exact record number of points in a single Premier League season?",
+      "choices": ["95 points", "97 points", "100 points", "98 points"],
+      "correctIndex": 2,
+      "difficulty": 5,
+      "explanation": "Manchester City set the PL record with exactly 100 points in 2017–18."
     }
   ]
 }
