@@ -83,6 +83,14 @@
       "correctIndex": 2,
       "difficulty": 1,
       "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+    },
+    {
+      "id": "ne-11",
+      "prompt": "Color of a clear daytime sky:",
+      "choices": ["Green", "Blue", "Yellow", "Gray"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Blue — sunlight scatters off atmospheric molecules, and shorter blue wavelengths scatter most."
     }
   ]
 }
