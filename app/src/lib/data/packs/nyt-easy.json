@@ -2,6 +2,7 @@
   "id": "nyt-easy",
   "title": "Easy Mini-Style Trivia",
   "category": "Word play",
+  "testNote": "Auto-trigger test #172",
   "description": "Short, breezy questions in the spirit of a daily mini puzzle. Built for warming up.",
   "questions": [
     {
