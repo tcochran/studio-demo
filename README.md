@@ -38,3 +38,5 @@ That's the whole loop. Try it as your first studio-ai task.
 ## Stack
 
 SvelteKit 2 · Svelte 5 (runes) · TypeScript · Vite · Vitest · adapter-static
+
+Hello from a Vercel-AI-SDK + DeepSeek agent on AgentCore at 2026-07-03T15:14:14.310Z.
