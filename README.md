@@ -39,3 +39,4 @@ That's the whole loop. Try it as your first studio-ai task.
 
 SvelteKit 2 · Svelte 5 (runes) · TypeScript · Vite · Vitest · adapter-static
 Second verification of the AgentCore harness event stream (task 2033).
+Stats-blob verification run (task 2038).
