@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync } from 'fs';
 import { resolve } from 'path';
+import { LRUCache } from './lru-cache';
 
 export type QuestionType = 'multiple-choice' | 'true-false' | 'fill-blank';
 export type TimeMode = 'per-question' | 'total';
@@ -50,6 +51,7 @@ export type Pack = {
 };
 
 const PACKS_DIR = resolve('src/lib/data/packs');
+const packCache = new LRUCache<string, Pack | null>(10);
 
 export function listPacks(): Pack[] {
 	return readdirSync(PACKS_DIR)
@@ -59,10 +61,17 @@ export function listPacks(): Pack[] {
 }
 
 export function getPack(id: string): Pack | null {
+	const cached = packCache.get(id);
+	if (cached !== undefined) {
+		return cached;
+	}
 	const file = resolve(PACKS_DIR, `${id}.json`);
 	try {
-		return JSON.parse(readFileSync(file, 'utf-8')) as Pack;
+		const pack = JSON.parse(readFileSync(file, 'utf-8')) as Pack;
+		packCache.set(id, pack);
+		return pack;
 	} catch {
+		packCache.set(id, null);
 		return null;
 	}
 }
