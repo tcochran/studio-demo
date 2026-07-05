@@ -83,6 +83,14 @@
       "correctIndex": 2,
       "difficulty": 1,
       "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+    },
+    {
+      "id": "ne-11",
+      "prompt": "What color is a clear daytime sky?",
+      "choices": ["Blue", "Red", "Green", "Purple"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "Blue is the color of a clear daytime sky due to Rayleigh scattering."
     }
   ]
 }
