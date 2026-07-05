@@ -3,6 +3,7 @@
 	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
 	import type { Pack, QuestionType, TimeMode } from '$lib/packs';
+	import { computeScore } from '$lib/score';
 
 	type PlayableOption = {
 		id: string;
@@ -81,6 +82,8 @@
 	const scorePercent = $derived(
 		totalPoints > 0 ? Math.round((earnedPoints / totalPoints) * 100) : 0
 	);
+	const score = $derived(computeScore(answers.map((answer) => ({ correct: answer.isCorrect }))));
+	const scoreSummary = $derived(`You scored ${score.percentage}% (${score.correct}/${score.total})`);
 	const timerLabel = $derived(formatTimer(secondsRemaining));
 	const timerWarning = $derived(hasTimer && secondsRemaining > 0 && secondsRemaining <= 10);
 
@@ -565,6 +568,7 @@
 		<div class="result-card">
 			<div class="result-hero">
 				<a class="back-link" href={backHref}>{backLabel}</a>
+				<p class="score-summary-line">{scoreSummary}</p>
 				<p class="result-label">You scored</p>
 				<p class="result-score">{scorePercent}%</p>
 				<p class="result-points">
@@ -1004,6 +1008,13 @@
 		gap: 0.9rem;
 		justify-items: center;
 		text-align: center;
+	}
+
+	.score-summary-line {
+		margin-bottom: 0;
+		color: #333;
+		font-size: 1rem;
+		font-weight: 800;
 	}
 
 	.result-label {
