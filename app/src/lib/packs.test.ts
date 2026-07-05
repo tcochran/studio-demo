@@ -36,6 +36,13 @@ describe('getPack', () => {
 	it('returns null for an unknown pack id', () => {
 		expect(getPack('does-not-exist')).toBeNull();
 	});
+
+	it('memoizes repeated calls for the same pack id', () => {
+		const first = getPack('nyt-easy');
+		const second = getPack('nyt-easy');
+		expect(first).not.toBeNull();
+		expect(first).toBe(second);
+	});
 });
 
 describe('pack schema — guards the rules from .studio/skills/quiz-content-conventions.md', () => {
