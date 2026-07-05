@@ -41,13 +41,6 @@ jobs:
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: pnpm run build
 
-      # TEMP (studio.ai release-row demo): force the release pipeline to fail so the
-      # merged task surfaces "builder action required" in agent-tasks. Revert after.
-      - name: Simulate release failure
-        run: |
-          echo "Simulating a failed release build for the studio.ai release-row demo."
-          exit 1
-
   # studio.ai "shipped" signal. This repo is private and the plan doesn't support
   # GitHub Pages, so there's no real publish step — a green build IS the release for
   # demo purposes. Record a `production` deployment + success status for the built
