@@ -50,3 +50,9 @@ echo "EXIT=${PIPESTATUS[0]}"
 On `EXIT≠0`: `tail -100 /workspace/studio-demo/logs/verify.log` to see which step failed, post a `create_comment` with the failure context, end the turn. Do not proceed.
 
 `pnpm run build` is the ground truth for a static site. Skip the dev server for verification.
+
+## Writing tests
+
+- vitest is already configured — `pnpm test` runs `vitest run`. NEVER install test tooling or type packages: no `@types/vitest` (it does not exist), no `@types/jest`, no jest, no vitest config changes. If `pnpm run check` fails on test files, the fix is in YOUR test file, not in dependencies or tsconfig.
+- There are no test globals. Import the API explicitly: `import { describe, it, expect } from 'vitest';`.
+- Co-locate tests next to the source: `src/lib/foo.ts` → `src/lib/foo.test.ts`. See `src/lib/packs.test.ts` for the house style.
