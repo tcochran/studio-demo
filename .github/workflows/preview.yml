@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  deployments: write
 
 concurrency:
   group: preview-${{ github.event.pull_request.number }}
@@ -50,6 +51,24 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: app/build
           destination_dir: pr-${{ github.event.pull_request.number }}
+
+      # studio.ai preview signal (idea #191, M1). Record a `preview` deployment
+      # + success status for the PR head SHA so the studio.ai webhook can match
+      # deployment.sha → task and stamp Task.previewUrl. transient_environment
+      # keeps other PRs' previews from being auto-inactivated; payload.pr lets
+      # cleanup-preview find every deployment this PR produced.
+      - name: Record preview deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          PR: ${{ github.event.pull_request.number }}
+          PREVIEW_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/
+        run: |
+          ID=$(printf '{"ref":"%s","environment":"preview","auto_merge":false,"required_contexts":[],"transient_environment":true,"payload":{"pr":%s}}' "$SHA" "$PR" \
+            | gh api "repos/$REPO/deployments" --method POST --input - --jq '.id')
+          gh api "repos/$REPO/deployments/$ID/statuses" --method POST \
+            -f state=success -f environment=preview -f environment_url="$PREVIEW_URL"
 
       - name: Comment preview URL
         uses: actions/github-script@v7
@@ -98,3 +117,15 @@ jobs:
           git add -A
           git diff --staged --quiet || git commit -m "Clean up preview for PR #${{ github.event.pull_request.number }}"
           git push
+
+      # Tell consumers (studio.ai) the preview is gone: post an inactive status
+      # on every preview deployment this PR recorded (matched via payload.pr).
+      - name: Mark preview deployments inactive
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          for ID in $(gh api "repos/$REPO/deployments?environment=preview&per_page=100" --jq ".[] | select(.payload.pr == $PR) | .id"); do
+            gh api "repos/$REPO/deployments/$ID/statuses" --method POST -f state=inactive
+          done
