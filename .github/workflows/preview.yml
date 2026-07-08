@@ -19,6 +19,12 @@ jobs:
   deploy-preview:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
+    # Declaring the environment makes GitHub create the `preview` deployment +
+    # deployment_status (success, with this environment_url) automatically —
+    # the studio.ai preview signal (idea #191, M1) with no API calls in the job.
+    environment:
+      name: preview
+      url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,24 +57,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: app/build
           destination_dir: pr-${{ github.event.pull_request.number }}
-
-      # studio.ai preview signal (idea #191, M1). Record a `preview` deployment
-      # + success status for the PR head SHA so the studio.ai webhook can match
-      # deployment.sha → task and stamp Task.previewUrl. transient_environment
-      # keeps other PRs' previews from being auto-inactivated; payload.pr lets
-      # cleanup-preview find every deployment this PR produced.
-      - name: Record preview deployment
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
-          SHA: ${{ github.event.pull_request.head.sha }}
-          PR: ${{ github.event.pull_request.number }}
-          PREVIEW_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/
-        run: |
-          ID=$(printf '{"ref":"%s","environment":"preview","auto_merge":false,"required_contexts":[],"transient_environment":true,"payload":{"pr":%s}}' "$SHA" "$PR" \
-            | gh api "repos/$REPO/deployments" --method POST --input - --jq '.id')
-          gh api "repos/$REPO/deployments/$ID/statuses" --method POST \
-            -f state=success -f environment=preview -f environment_url="$PREVIEW_URL"
 
       - name: Comment preview URL
         uses: actions/github-script@v7
