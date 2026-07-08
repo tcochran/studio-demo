@@ -1,10 +1,20 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { packDifficultyLabel } from '$lib/packs';
 	import type { Pack } from '$lib/packs';
 
 	let { data } = $props();
 	const packs = $derived<Pack[]>(data.packs);
+
+	function packDifficultyLabel(pack: Pack): string {
+		const difficulties = pack.questions
+			.map((q) => q.difficulty)
+			.filter((d): d is 1 | 2 | 3 => d != null);
+		if (difficulties.length === 0) return '';
+		const avg = difficulties.reduce((a, b) => a + b, 0) / difficulties.length;
+		if (avg <= 2) return 'Easy';
+		if (avg <= 3.5) return 'Medium';
+		return 'Hard';
+	}
 </script>
 
 <div class="container">
