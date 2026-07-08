@@ -15,6 +15,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,11 +43,18 @@ jobs:
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: pnpm run build
 
-  # studio.ai "shipped" signal. This repo is private and the plan doesn't support
-  # GitHub Pages, so there's no real publish step — a green build IS the release for
-  # demo purposes. Record a `production` deployment + success status for the built
-  # commit so the studio.ai webhook (idea #185, M1) can match deployment.sha → task
-  # and move it done→shipped.
+      # keep_files preserves the pr-N preview dirs that preview.yml publishes
+      # alongside the production site on gh-pages.
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: app/build
+          keep_files: true
+
+  # studio.ai "shipped" signal. Record a `production` deployment + success status
+  # for the built commit so the studio.ai webhook (idea #185, M1) can match
+  # deployment.sha → task and move it done→shipped.
   mark-production:
     needs: build
     runs-on: ubuntu-latest
