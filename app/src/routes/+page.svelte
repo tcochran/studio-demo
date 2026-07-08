@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { packDifficultyLabel } from '$lib/packs';
 	import type { Pack } from '$lib/packs';
 
 	let { data } = $props();
@@ -31,6 +32,9 @@
 						<h3>{pack.title}</h3>
 						<span class="category">{pack.category}</span>
 					</div>
+					{#if packDifficultyLabel(pack)}
+						<span class="difficulty difficulty--{packDifficultyLabel(pack).toLowerCase()}">{packDifficultyLabel(pack)}</span>
+					{/if}
 					<p class="description">{pack.description}</p>
 					<div class="meta">
 						<span>{pack.questions.length} questions</span>
@@ -161,6 +165,31 @@
 		letter-spacing: 0;
 		text-transform: uppercase;
 		white-space: nowrap;
+	}
+
+	.difficulty {
+		align-self: flex-start;
+		border-radius: 6px;
+		padding: 0.2rem 0.45rem;
+		font-size: 0.68rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.difficulty--easy {
+		background: #f0fdf4;
+		color: #15803d;
+	}
+
+	.difficulty--medium {
+		background: #fffbeb;
+		color: #b45309;
+	}
+
+	.difficulty--hard {
+		background: #fef2f2;
+		color: #b91c1c;
 	}
 
 	.description {

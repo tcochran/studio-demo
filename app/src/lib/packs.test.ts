@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'fs';
 import { resolve } from 'path';
-import { listPacks, getPack, type Pack, type MultipleChoiceQuestion } from './packs';
+import { listPacks, getPack, packDifficultyLabel, type Pack, type MultipleChoiceQuestion } from './packs';
 
 const PACKS_DIR = resolve('src/lib/data/packs');
 
@@ -10,6 +10,39 @@ function loadAllPacks(): Pack[] {
 		.filter((f) => f.endsWith('.json'))
 		.map((f) => JSON.parse(readFileSync(resolve(PACKS_DIR, f), 'utf-8')) as Pack);
 }
+
+describe('packDifficultyLabel', () => {
+	function makePack(difficulties: (number | undefined)[]): Pack {
+		return {
+			id: 'test',
+			title: 'Test',
+			category: 'Test',
+			description: 'Test',
+			questions: difficulties.map((d, i) => ({
+				id: `t-${i + 1}`,
+				prompt: 'Q',
+				explanation: 'E',
+				difficulty: d as 1 | 2 | 3 | undefined
+			}))
+		};
+	}
+
+	it('returns "Easy" when average difficulty ≤ 2', () => {
+		expect(packDifficultyLabel(makePack([1, 1, 2, 1]))).toBe('Easy');
+	});
+
+	it('returns "Hard" when average difficulty > 3.5', () => {
+		expect(packDifficultyLabel(makePack([4, 5, 4, 4]))).toBe('Hard');
+	});
+
+	it('returns "Medium" for mid-range average', () => {
+		expect(packDifficultyLabel(makePack([2, 3, 3, 2]))).toBe('Medium');
+	});
+
+	it('returns empty string when no questions have difficulty set', () => {
+		expect(packDifficultyLabel(makePack([undefined, undefined]))).toBe('');
+	});
+});
 
 describe('listPacks', () => {
 	const packs = listPacks();
