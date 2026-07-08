@@ -107,13 +107,14 @@ jobs:
           git push
 
       # Tell consumers (studio.ai) the preview is gone: post an inactive status
-      # on every preview deployment this PR recorded (matched via payload.pr).
+      # on every preview deployment this PR produced. The job's `environment:`
+      # records deployments with ref = the PR head branch, one per synchronize.
       - name: Mark preview deployments inactive
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
-          PR: ${{ github.event.pull_request.number }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
         run: |
-          for ID in $(gh api "repos/$REPO/deployments?environment=preview&per_page=100" --jq ".[] | select(.payload.pr == $PR) | .id"); do
+          for ID in $(gh api "repos/$REPO/deployments?environment=preview&ref=$HEAD_REF&per_page=100" --jq '.[].id'); do
             gh api "repos/$REPO/deployments/$ID/statuses" --method POST -f state=inactive
           done
