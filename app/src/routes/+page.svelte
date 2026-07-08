@@ -4,6 +4,17 @@
 
 	let { data } = $props();
 	const packs = $derived<Pack[]>(data.packs);
+
+	function packDifficultyLabel(pack: Pack): string {
+		const difficulties = pack.questions
+			.map((q) => q.difficulty)
+			.filter((d): d is 1 | 2 | 3 => d != null);
+		if (difficulties.length === 0) return '';
+		const avg = difficulties.reduce((a, b) => a + b, 0) / difficulties.length;
+		if (avg <= 2) return 'Easy';
+		if (avg <= 3.5) return 'Medium';
+		return 'Hard';
+	}
 </script>
 
 <div class="container">
@@ -31,6 +42,9 @@
 						<h3>{pack.title}</h3>
 						<span class="category">{pack.category}</span>
 					</div>
+					{#if packDifficultyLabel(pack)}
+						<span class="difficulty difficulty--{packDifficultyLabel(pack).toLowerCase()}">{packDifficultyLabel(pack)}</span>
+					{/if}
 					<p class="description">{pack.description}</p>
 					<div class="meta">
 						<span>{pack.questions.length} questions</span>
@@ -161,6 +175,31 @@
 		letter-spacing: 0;
 		text-transform: uppercase;
 		white-space: nowrap;
+	}
+
+	.difficulty {
+		align-self: flex-start;
+		border-radius: 6px;
+		padding: 0.2rem 0.45rem;
+		font-size: 0.68rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.difficulty--easy {
+		background: #f0fdf4;
+		color: #15803d;
+	}
+
+	.difficulty--medium {
+		background: #fffbeb;
+		color: #b45309;
+	}
+
+	.difficulty--hard {
+		background: #fef2f2;
+		color: #b91c1c;
 	}
 
 	.description {

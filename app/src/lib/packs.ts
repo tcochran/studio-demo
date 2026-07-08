@@ -58,6 +58,17 @@ export function listPacks(): Pack[] {
 		.sort((a: Pack, b: Pack) => a.title.localeCompare(b.title));
 }
 
+export function packDifficultyLabel(pack: Pack): string {
+	const difficulties = pack.questions
+		.map((q) => q.difficulty)
+		.filter((d): d is 1 | 2 | 3 => d != null);
+	if (difficulties.length === 0) return '';
+	const avg = difficulties.reduce((a: number, b: number) => a + b, 0) / difficulties.length;
+	if (avg <= 2) return 'Easy';
+	if (avg <= 3.5) return 'Medium';
+	return 'Hard';
+}
+
 export function getPack(id: string): Pack | null {
 	const file = resolve(PACKS_DIR, `${id}.json`);
 	try {
