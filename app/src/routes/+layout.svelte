@@ -27,7 +27,7 @@
 <style>
 	:global(body) {
 		margin: 0;
-		background: #fafafa;
+		background: purple;
 	}
 
 	.site-header {
