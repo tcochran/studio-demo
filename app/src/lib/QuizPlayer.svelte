@@ -658,7 +658,7 @@
 		padding: 1rem 1.25rem 3rem;
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 		color: #141414;
-		background: yellow;
+		background: red;
 	}
 
 	.player-shell {
