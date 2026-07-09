@@ -24,6 +24,8 @@
 			<span>{packs.length} packs</span>
 		</div>
 
+		<input class="search" type="search" placeholder="Search our catalog..." />
+
 		<div class="pack-grid">
 			{#each packs as pack (pack.id)}
 				<a class="pack-card" href="{base}/play/{pack.id}">
@@ -123,6 +125,16 @@
 		color: #666;
 		font-size: 0.9rem;
 		font-weight: 700;
+	}
+
+	.search {
+		width: 100%;
+		margin-bottom: 1rem;
+		padding: 0.5rem 0.75rem;
+		border: 1px solid #dedede;
+		border-radius: 6px;
+		font-size: 0.95rem;
+		box-sizing: border-box;
 	}
 
 	.pack-grid {
