@@ -3,8 +3,8 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
 describe('+layout.svelte body background', () => {
-	it('sets the body background to blue', () => {
+	it('sets the body background to purple', () => {
 		const src = readFileSync(resolve('src/routes/+layout.svelte'), 'utf-8');
-		expect(src).toMatch(/background:\s*blue/);
+		expect(src).toMatch(/background:\s*purple/);
 	});
 });
