@@ -6,11 +6,11 @@
   "questions": [
     {
       "id": "ne-1",
-      "prompt": "Tropical orange-fleshed stone fruit, five letters:",
-      "choices": ["Peach", "Mango", "Guava", "Melon"],
-      "correctIndex": 1,
+      "prompt": "British boiled sweet, striped red and white, five letters:",
+      "choices": ["Candy", "Taffy", "Peppermint", "Mint"],
+      "correctIndex": 2,
       "difficulty": 1,
-      "explanation": "Mango — five letters, fits the clue."
+      "explanation": "Peppermint — a classic British sweet with red and white stripes, five letters."
     },
     {
       "id": "ne-2",
