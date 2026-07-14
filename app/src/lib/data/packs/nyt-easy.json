@@ -83,6 +83,14 @@
       "correctIndex": 2,
       "difficulty": 1,
       "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+    },
+    {
+      "id": "ne-11",
+      "prompt": "Metal element that is liquid at room temperature:",
+      "choices": ["Mercury", "Gold", "Silver", "Iron"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "Mercury is the only metal that is liquid at room temperature."
     }
   ]
 }
