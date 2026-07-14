@@ -38,6 +38,17 @@ describe('getPack', () => {
 	});
 });
 
+describe('british-food pack — welsh harp question', () => {
+	it('contains a question about the Welsh harp (telyn)', () => {
+		const pack = getPack('british-food');
+		expect(pack).not.toBeNull();
+		const telynQ = pack!.questions.find(
+			(q) => q.prompt.toLowerCase().includes('telyn') || q.explanation.toLowerCase().includes('telyn')
+		);
+		expect(telynQ).toBeDefined();
+	});
+});
+
 describe('pack schema — guards the rules from .studio/skills/quiz-content-conventions.md', () => {
 	const packs = loadAllPacks();
 

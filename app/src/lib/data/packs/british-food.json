@@ -1,0 +1,16 @@
+{
+  "id": "british-food",
+  "title": "British Food & Culture",
+  "category": "Culture",
+  "description": "From fish and chips to Celtic traditions — a tour of British Isles food, history, and customs.",
+  "questions": [
+    {
+      "id": "bf-1",
+      "prompt": "Welsh name for the traditional national harp:",
+      "choices": ["Crwth", "Telyn", "Pibgorn", "Ffidil"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Telyn is the Welsh word for harp; it is the national instrument of Wales and appears on the Royal Badge."
+    }
+  ]
+}
