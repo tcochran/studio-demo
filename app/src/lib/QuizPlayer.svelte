@@ -3,6 +3,7 @@
 	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
 	import type { Pack, QuestionType, TimeMode } from '$lib/packs';
+	import { computeScore } from '$lib/score';
 
 	type PlayableOption = {
 		id: string;
@@ -77,6 +78,7 @@
 		answers.reduce((total, answer) => total + answer.pointsEarned, 0)
 	);
 	const correctCount = $derived(answers.filter((answer) => answer.isCorrect).length);
+	const scoreSummary = $derived(computeScore(answers.map((a) => ({ correct: a.isCorrect }))));
 	const incorrectCount = $derived(answers.length - correctCount);
 	const scorePercent = $derived(
 		totalPoints > 0 ? Math.round((earnedPoints / totalPoints) * 100) : 0
@@ -570,6 +572,7 @@
 				<p class="result-points">
 					{earnedPoints} of {totalPoints} points - {correctCount} of {questions.length} correct
 				</p>
+				<p class="result-score-summary">You scored {scoreSummary.percentage}% ({scoreSummary.correct}/{scoreSummary.total})</p>
 				<p class="result-summary">
 					{#if scorePercent === 100}
 						Perfect round. Nicely played.
@@ -1027,6 +1030,13 @@
 		margin-bottom: 0;
 		color: #333;
 		font-weight: 800;
+	}
+
+	.result-score-summary {
+		margin-bottom: 0;
+		color: #555;
+		font-size: 0.95rem;
+		font-weight: 750;
 	}
 
 	.result-summary,
