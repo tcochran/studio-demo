@@ -4,6 +4,7 @@
 Re-test v3 skill-path migration: 2026-06-04 swordfish
 
 # Quiz Lab
+<!-- A SvelteKit trivia app that demonstrates the studio-ai idea-to-production workflow with swappable quiz packs deployed to GitHub Pages. -->
 
 A product trivia app built to showcase the studio-ai workflow end-to-end: ideas → tasks → branches → PRs → production. Pick a pack, play a round, and watch new packs ship while you play.
 
