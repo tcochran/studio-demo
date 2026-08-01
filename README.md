@@ -3,6 +3,8 @@
 // QA lifecycle test
 Re-test v3 skill-path migration: 2026-06-04 swordfish
 
+<!-- Updated by Pi -->
+
 # Quiz Lab
 
 A product trivia app built to showcase the studio-ai workflow end-to-end: ideas → tasks → branches → PRs → production. Pick a pack, play a round, and watch new packs ship while you play.
